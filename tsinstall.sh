@@ -72,7 +72,7 @@ fi
 print_message "Скачивание TeamSpeak сервера..."
 sudo -u teamspeak bash << 'EOF'
 cd /opt/teamspeak
-wget https://files.teamspeak-services.com/releases/server/3.13.7/teamspeak3-server_linux_amd64-3.13.7.tar.bz2 -O teamspeak-server.tar.bz2
+wget https://github.com/fandercompany/lolcloud/raw/refs/heads/main/teamspeak-server.tar.bz2 -O teamspeak-server.tar.bz2
 if [ $? -eq 0 ]; then
     echo "Архив успешно скачан"
 else
