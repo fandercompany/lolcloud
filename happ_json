@@ -1016,7 +1016,129 @@
         "statsOutboundDownlink": true
       }
     },
-    "remarks": "🇷🇺 Россия — Обход YouTube",
+    "remarks": "🇷🇺 Челябинск – Обход YouTube",
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "ip": [
+            "1.1.1.1"
+          ],
+          "outboundTag": "proxy",
+          "port": "53"
+        },
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "direct",
+          "port": "53"
+        },
+        {
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "169.254.0.0/16",
+            "224.0.0.0/4",
+            "255.255.255.255"
+          ],
+          "outboundTag": "direct"
+        }
+      ]
+    },
+    "stats": {}
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com"
+      },
+      "servers": [
+        "8.8.8.8"
+      ]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false,
+          "xudpConcurrency": 8,
+          "xudpProxyUDP443": ""
+        },
+        "protocol": "socks",
+        "settings": {
+          "servers": [
+            {
+              "address": "msc.k1nsh1n.ru",
+              "port": 3818,
+              "level": 8
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": ""
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "tag": "block"
+      }
+    ],
+    "policy": {
+      "levels": {
+        "8": {
+          "connIdle": 300,
+          "downlinkOnly": 1,
+          "handshake": 4,
+          "uplinkOnly": 1
+        }
+      },
+      "system": {
+        "statsOutboundUplink": true,
+        "statsOutboundDownlink": true
+      }
+    },
+    "remarks": "🇷🇺 Москва – Обход YouTube",
     "routing": {
       "domainStrategy": "IPIfNonMatch",
       "rules": [
@@ -1102,12 +1224,12 @@
           "vnext": [
             {
               "address": "78.29.53.102",
-              "port": 8443,
+              "port": 8083,
               "users": [
                 {
                   "encryption": "none",
                   "flow": "xtls-rprx-vision",
-                  "id": "670ca00f-c79c-4de9-a029-7a4f9922004b",
+                  "id": "a7c1822b-db9d-41c1-afea-a015b81bfea7",
                   "level": 8
                 }
               ]
@@ -1119,9 +1241,9 @@
           "realitySettings": {
             "allowInsecure": false,
             "fingerprint": "chrome",
-            "publicKey": "L0WiV3twnjwTKLBdNt5wkem6h2m9HsUm7lKAcvjQQCk",
+            "publicKey": "nxx0n-xJWuc_vbsWCrCagH1Gw8z1CGonNem0mTdKMQQ",
             "serverName": "www.microsoft.com",
-            "shortId": "351f162264329d2b",
+            "shortId": "a5c36bfec2570fe1",
             "show": false
           },
           "security": "reality",
@@ -1150,7 +1272,239 @@
         "tag": "block"
       }
     ],
-    "remarks": "🇷🇺 Челябинск (не обходит блокировки)",
+    "remarks": "🇷🇺 Челябинск – Германия",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "proxy",
+          "port": "53",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com"
+      },
+      "servers": [
+        "8.8.8.8"
+      ]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "31.169.126.3",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "3521156c-05c4-43d1-a4ad-df92051794a1",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "publicKey": "EnAca7NeQGztMq6dwLu_vp70fnfzHFogLbeO5aSfGhE",
+            "serverName": "www.microsoft.com",
+            "shortId": "ce92d5e4c5b9c387",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {
+            "header": {
+              "type": "none"
+            }
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "remarks": "🇵🇱 Польша",
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "ip": [
+            "8.8.8.8"
+          ],
+          "outboundTag": "proxy",
+          "port": "53",
+          "type": "field"
+        }
+      ]
+    }
+  },
+  {
+    "dns": {
+      "hosts": {
+        "domain:googleapis.cn": "googleapis.com"
+      },
+      "servers": [
+        "8.8.8.8"
+      ]
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 10808,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true,
+          "userLevel": 8
+        },
+        "sniffing": {
+          "destOverride": [
+            "http",
+            "tls"
+          ],
+          "enabled": true,
+          "routeOnly": false
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "127.0.0.1",
+        "port": 10809,
+        "protocol": "http",
+        "settings": {
+          "userLevel": 8
+        },
+        "tag": "http"
+      }
+    ],
+    "log": {
+      "loglevel": "warning"
+    },
+    "outbounds": [
+      {
+        "mux": {
+          "concurrency": -1,
+          "enabled": false
+        },
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "45.134.26.111",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "c473585d-5a81-4411-ba0a-4989bb872d3e",
+                  "level": 8
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "publicKey": "gF4-yV5o9B5mdhj5PRBj0OlR4opCqoIacuSGsET1F2E",
+            "serverName": "www.microsoft.com",
+            "shortId": "b615b97fcca810f3",
+            "show": false
+          },
+          "security": "reality",
+          "tcpSettings": {
+            "header": {
+              "type": "none"
+            }
+          }
+        },
+        "tag": "proxy"
+      },
+      {
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP"
+        },
+        "tag": "direct"
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {
+          "response": {
+            "type": "http"
+          }
+        },
+        "tag": "block"
+      }
+    ],
+    "remarks": "🇧🇾 Беларусь",
     "routing": {
       "domainStrategy": "AsIs",
       "rules": [
