@@ -51,13 +51,13 @@
         "settings": {
           "vnext": [
             {
-              "address": "91.205.220.196",
+              "address": "138.124.79.106",
               "port": 443,
               "users": [
                 {
                   "encryption": "none",
                   "flow": "xtls-rprx-vision",
-                  "id": "ebb99278-3162-4249-86f1-6eb5d69c831b",
+                  "id": "548cfc1c-68a2-40e4-a1f6-4e088cd4bb29",
                   "level": 8
                 }
               ]
@@ -69,9 +69,9 @@
           "realitySettings": {
             "allowInsecure": false,
             "fingerprint": "chrome",
-            "publicKey": "ZPvCje7L_cWc_VXgyXD6kTogIlbyTYE_RX6_X-H99lc",
-            "serverName": "www.microsoft.com",
-            "shortId": "039e1f61cafcc6ef",
+            "publicKey": "uydr5IsIcraVfJB6DdSjhVueQqWAi5eg8XJJB81ziAA",
+            "serverName": "www.google.com",
+            "shortId": "ff60e4c2a9fcc955",
             "show": false
           },
           "security": "reality",
@@ -100,7 +100,7 @@
         "tag": "block"
       }
     ],
-    "remarks": "🇫🇮 Финляндия",
+    "remarks": "🇳🇱 Нидерланды",
     "routing": {
       "domainStrategy": "AsIs",
       "rules": [
