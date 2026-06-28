@@ -283,12 +283,13 @@
         "settings": {
           "vnext": [
             {
-              "address": "u.white.sykto.ru",
-              "port": 3444,
+              "address": "89.37.192.58",
+              "port": 8443,
               "users": [
                 {
                   "encryption": "none",
-                  "id": "2b48dd79-8e1c-4d5b-8a6f-c9e3d5f7a2b1",
+                  "flow": "xtls-rprx-vision",
+                  "id": "48ad3fb3-6640-407a-a755-0c07b32e83cf",
                   "level": 8
                 }
               ]
@@ -297,7 +298,15 @@
         },
         "streamSettings": {
           "network": "tcp",
-          "security": "none",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "publicKey": "hfmwdOSbfzzJjQVT1CDUrG9lBb7Bha1Rbrw4FZ9drlc",
+            "serverName": "www.google.com",
+            "shortId": "9931dbd009af7635",
+            "show": false
+          },
+          "security": "reality",
           "tcpSettings": {
             "header": {
               "type": "none"
@@ -323,7 +332,7 @@
         "tag": "block"
       }
     ],
-    "remarks": "🇷🇺 Екатеринбург - Белые списки",
+    "remarks": "🇷🇴 Румыния",
     "routing": {
       "domainStrategy": "AsIs",
       "rules": [
@@ -390,12 +399,13 @@
         "settings": {
           "vnext": [
             {
-              "address": "85.192.56.102",
-              "port": 3444,
+              "address": "141.133.175.223",
+              "port": 443,
               "users": [
                 {
                   "encryption": "none",
-                  "id": "f81c2da9-07c6-4115-9098-ad7f51c39d04",
+                  "flow": "xtls-rprx-vision",
+                  "id": "02f783a4-e369-4788-b39c-c13405f5e90d",
                   "level": 8
                 }
               ]
@@ -404,7 +414,15 @@
         },
         "streamSettings": {
           "network": "tcp",
-          "security": "none",
+          "realitySettings": {
+            "allowInsecure": false,
+            "fingerprint": "chrome",
+            "publicKey": "2aVNGUa_IIxLF20CVPqawvsT07NB2VRdXnU3UVnmynQ",
+            "serverName": "www.google.com",
+            "shortId": "3aa30d88e6e96596",
+            "show": false
+          },
+          "security": "reality",
           "tcpSettings": {
             "header": {
               "type": "none"
@@ -430,7 +448,7 @@
         "tag": "block"
       }
     ],
-    "remarks": "🇷🇺 Москва - Белые списки",
+    "remarks": "🇨🇿 Чехия",
     "routing": {
       "domainStrategy": "AsIs",
       "rules": [
@@ -444,113 +462,5 @@
         }
       ]
     }
-  },
-  {
-    "dns": {
-      "hosts": {
-        "domain:googleapis.cn": "googleapis.com"
-      },
-      "servers": [
-        "8.8.8.8"
-      ]
-    },
-    "inbounds": [
-      {
-        "listen": "127.0.0.1",
-        "port": 10808,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true,
-          "userLevel": 8
-        },
-        "sniffing": {
-          "destOverride": [
-            "http",
-            "tls"
-          ],
-          "enabled": true,
-          "routeOnly": false
-        },
-        "tag": "socks"
-      },
-      {
-        "listen": "127.0.0.1",
-        "port": 10809,
-        "protocol": "http",
-        "settings": {
-          "userLevel": 8
-        },
-        "tag": "http"
-      }
-    ],
-    "log": {
-      "loglevel": "warning"
-    },
-    "outbounds": [
-      {
-        "mux": {
-          "concurrency": -1,
-          "enabled": false,
-          "xudpConcurrency": 8,
-          "xudpProxyUDP443": ""
-        },
-        "protocol": "socks",
-        "settings": {
-          "servers": [
-            {
-              "address": "89.125.121.32",
-              "port": 2080,
-              "level": 8
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": ""
-        },
-        "tag": "proxy"
-      },
-      {
-        "protocol": "freedom",
-        "tag": "direct"
-      },
-      {
-        "protocol": "blackhole",
-        "tag": "block"
-      }
-    ],
-    "remarks": "🇪🇺 Автовыбор - Европа",
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "ip": [
-            "1.1.1.1"
-          ],
-          "outboundTag": "proxy",
-          "port": "53"
-        },
-        {
-          "ip": [
-            "8.8.8.8"
-          ],
-          "outboundTag": "direct",
-          "port": "53"
-        },
-        {
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "169.254.0.0/16",
-            "224.0.0.0/4",
-            "255.255.255.255"
-          ],
-          "outboundTag": "direct"
-        }
-      ]
-    },
-    "stats": {}
   }
 ]
