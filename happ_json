@@ -53,7 +53,7 @@
     }
   },
   {
-    "remarks": "🇭🇺 Венгрия",
+    "remarks": "🇬🇧 Англия 1",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -64,8 +64,67 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.195.111.15", "port": 443, "users": [{ "id": "c022defc-6823-4d37-bd35-2fa68b4210b7", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "5post-gate.x5.ru", "fingerprint": "firefox", "publicKey": "7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg", "shortId": "8ba12e75110b7a9c", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "45.206.52.204", "port": 443, "users": [{ "id": "260fa49b-eb10-4d21-ae19-937b44b8ba0d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8", "shortId": "37772edff71b4167", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇧🇷 Бразилия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.59.142.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "_0HnraldEtXmJMu7t3nEm8VmQXkMWF7dX1Dmz5KceSw", "shortId": "57f5917841a2178f", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇪🇪 Эстония 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "185.200.196.68", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -134,7 +193,66 @@
     }
   },
   {
-    "remarks": "🇩🇪 Германия",
+    "remarks": "🇫🇮 Финляндия 3",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "138.124.9.93", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇫🇷 Франция 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.192.2.157", "port": 443, "users": [{ "id": "58f3e276-ba26-4b27-949a-5cfbb21f949a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "yandex.net", "fingerprint": "firefox", "publicKey": "1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA", "shortId": "364994a6f61fc955", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇩🇪 Германия 1",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -147,6 +265,571 @@
         "protocol": "vless",
         "settings": { "vnext": [{ "address": "154.222.9.32", "port": 443, "users": [{ "id": "0d288b28-ba97-4a91-ac81-08ad60f58410", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
         "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "ISa-DZOI4LRRb9DHMFYm5oFqBXDjYzz0hVWUfWvzLmo", "shortId": "5be97fb85093a3a9", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇩🇪 Германия 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "138.124.33.98", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇭🇰 Гонконг 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.58.176.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "uWB8HfNVK_-9KtjDGjmBovnYxTh6wN95APRUBmCC30M", "shortId": "348fac7c65368555", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇮🇳 Индия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.149.114.147", "port": 8443, "users": [{ "id": "e5d59726-1fb5-4461-9adf-4ecccf706365", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "rbc.ru", "fingerprint": "firefox", "publicKey": "yOWj4KtHTjRo6SutNETYUgiNUXES0NY-PcpE9a4MqFM", "shortId": "0a3f199712e38f33", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇮🇳 Индия 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.59.149.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "yOWj4KtHTjRo6SutNETYUgiNUXES0NY-PcpE9a4MqFM", "shortId": "f084a3b523cf0aa7", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇪🇸 Испания 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.196.208.95", "port": 443, "users": [{ "id": "6d8659f7-1616-4611-8e31-90622cfcf1ae", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "zr8_rtHm86s_G1gfRwNtunStGngYZSdYkA3PyBFXpDg", "shortId": "28047c78b3f5ee2c", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇮🇹 Италия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.196.214.159", "port": 443, "users": [{ "id": "71f89b85-7ae5-451b-9bcc-b78d0dbf37ca", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "_CjW0Khlrr5z5oc9Oy6-w2ZEanz-zMBktVn5EOX9oTM", "shortId": "4ffc99daad0f261f", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇰🇿 Казахстан 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.58.93.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "unyuuAPGgKOlZDNcwmKK6re8DwGMp0Npy675AOhQTD8", "shortId": "84aa32f674cfe92f", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇰🇿 Казахстан 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "193.39.68.215", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇨🇦 Канада 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.206.5.193", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "pPi-WO8qQFFZ9UJWNLW9YClbjcoAAZWJQ2_FM3Kjhz8", "shortId": "da147b40372a5fed", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇱🇻 Латвия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "195.123.210.53", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇱🇹 Литва 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.196.31.244", "port": 8443, "users": [{ "id": "f9c6e1a8-ccf3-44d8-8cc4-382cd0ddca00", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "L3X1eh1Jq_6PKJ6LlwjgiWq0XNaDOqCVKgIElJ5nkVA", "shortId": "e0ef3d5c0aacb615", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇲🇩 Молдова 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "176.123.4.61", "port": 8443, "users": [{ "id": "b17ffa53-0c17-44aa-9e82-c5cb3297771d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "rbc.ru", "fingerprint": "firefox", "publicKey": "NtsJnsHr8a9mPDr0SPxdJlSRbdUVmR_-Rq5RVT-3KzA", "shortId": "58a6be9762c769f2", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇲🇩 Молдова 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.59.36.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "NtsJnsHr8a9mPDr0SPxdJlSRbdUVmR_-Rq5RVT-3KzA", "shortId": "9f4263b353817e73", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇳🇱 Нидерланды 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "154.84.171.253", "port": 8443, "users": [{ "id": "1ec92dbf-9a3c-45c6-bb6b-66884f26d3b3", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "LT_0j3zQkaqgtJHvyaG24xz0IfmXUswVCTeC75Qsgjo", "shortId": "0905b6e16602f326", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇳🇱 Нидерланды 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "138.124.79.106", "port": 443, "users": [{ "id": "548cfc1c-68a2-40e4-a1f6-4e088cd4bb29", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.google.com", "fingerprint": "chrome", "publicKey": "uydr5IsIcraVfJB6DdSjhVueQqWAi5eg8XJJB81ziAA", "shortId": "ff60e4c2a9fcc955", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇳🇱 Нидерланды 3",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.148.244.23", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇵🇱 Польша 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.198.96.153", "port": 443, "users": [{ "id": "c47bea87-ace2-41cd-a5e8-6e703c3e6b93", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "9Y-_jCI3Z1x6SXK2tHdZ6V1CN9IJPNPnoxSW0cbXxD8", "shortId": "764f497dda21c4fc", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇵🇱 Польша 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "37.252.10.140", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇷🇴 Румыния 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "89.37.192.58", "port": 8443, "users": [{ "id": "48ad3fb3-6640-407a-a755-0c07b32e83cf", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.google.com", "fingerprint": "chrome", "publicKey": "hfmwdOSbfzzJjQVT1CDUrG9lBb7Bha1Rbrw4FZ9drlc", "shortId": "9931dbd009af7635", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇷🇺 Россия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "46.243.211.199", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "rbc.ru", "fingerprint": "firefox", "publicKey": "rZgu2lJcC2yrYnx66znee-Z75mW6m4TRfWt7_neoEVI", "shortId": "1c74cf626ef50bb3", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -215,7 +898,7 @@
     }
   },
   {
-    "remarks": "🇵🇱 Польша",
+    "remarks": "🇨🇭 Швейцария 3",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -226,8 +909,13 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.198.96.153", "port": 443, "users": [{ "id": "c47bea87-ace2-41cd-a5e8-6e703c3e6b93", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "9Y-_jCI3Z1x6SXK2tHdZ6V1CN9IJPNPnoxSW0cbXxD8", "shortId": "764f497dda21c4fc", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "5.188.61.52", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -242,7 +930,7 @@
     }
   },
   {
-    "remarks": "🇫🇷 Франция",
+    "remarks": "🇸🇪 Швеция 1",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -253,8 +941,8 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.192.2.157", "port": 443, "users": [{ "id": "58f3e276-ba26-4b27-949a-5cfbb21f949a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "yandex.net", "fingerprint": "firefox", "publicKey": "1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA", "shortId": "364994a6f61fc955", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "45.196.161.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "pPi-WO8qQFFZ9UJWNLW9YClbjcoAAZWJQ2_FM3Kjhz8", "shortId": "d3ee47fc2f553c44", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -269,7 +957,7 @@
     }
   },
   {
-    "remarks": "🇪🇸 Испания",
+    "remarks": "🇹🇷 Турция 1",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -280,8 +968,8 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.196.208.95", "port": 443, "users": [{ "id": "6d8659f7-1616-4611-8e31-90622cfcf1ae", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "zr8_rtHm86s_G1gfRwNtunStGngYZSdYkA3PyBFXpDg", "shortId": "28047c78b3f5ee2c", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "45.196.201.194", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04", "shortId": "e57932a42872a362", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -296,7 +984,7 @@
     }
   },
   {
-    "remarks": "🇱🇹 Литва",
+    "remarks": "🇹🇷 Турция 2",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -307,8 +995,13 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.196.31.244", "port": 8443, "users": [{ "id": "f9c6e1a8-ccf3-44d8-8cc4-382cd0ddca00", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "L3X1eh1Jq_6PKJ6LlwjgiWq0XNaDOqCVKgIElJ5nkVA", "shortId": "e0ef3d5c0aacb615", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "77.83.245.205", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -323,7 +1016,7 @@
     }
   },
   {
-    "remarks": "🇮🇹 Италия",
+    "remarks": "🇬🇧 Великобритания 2",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -334,8 +1027,13 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.196.214.159", "port": 443, "users": [{ "id": "71f89b85-7ae5-451b-9bcc-b78d0dbf37ca", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "_CjW0Khlrr5z5oc9Oy6-w2ZEanz-zMBktVn5EOX9oTM", "shortId": "4ffc99daad0f261f", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "132.243.167.165", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -350,7 +1048,7 @@
     }
   },
   {
-    "remarks": "🇬🇧 Англия",
+    "remarks": "🇺🇸 США 1",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -361,8 +1059,8 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.206.52.204", "port": 443, "users": [{ "id": "260fa49b-eb10-4d21-ae19-937b44b8ba0d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8", "shortId": "37772edff71b4167", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "154.193.55.82", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "EMS0wzISeSbEe4JABPD8EgDnyLXgDmrX4_lcfG6VVX4", "shortId": "c76ba2c2fb172e8b", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -377,7 +1075,7 @@
     }
   },
   {
-    "remarks": "🇳🇱 Нидерланды",
+    "remarks": "🇺🇸 США 2",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -388,8 +1086,121 @@
       {
         "tag": "proxy",
         "protocol": "vless",
-        "settings": { "vnext": [{ "address": "154.84.171.253", "port": 8443, "users": [{ "id": "1ec92dbf-9a3c-45c6-bb6b-66884f26d3b3", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "LT_0j3zQkaqgtJHvyaG24xz0IfmXUswVCTeC75Qsgjo", "shortId": "0905b6e16602f326", "allowInsecure": false } }
+        "settings": { "vnext": [{ "address": "154.193.1.125", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "EMS0wzISeSbEe4JABPD8EgDnyLXgDmrX4_lcfG6VVX4", "shortId": "c76ba2c2fb172e8b", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇺🇸 США 3",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "92.118.112.202", "port": 443, "users": [{ "id": "90e614fa-c01a-4314-bb43-8d3fc36bf0eb", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "grpc",
+          "security": "reality",
+          "realitySettings": { "serverName": "www.samsung.com", "fingerprint": "qq", "publicKey": "TleO2NpQAVohMUsmgQrR-QZuUbwYw-57kn3Lhcqt43c", "shortId": "9c96420532ebe46c", "allowInsecure": false },
+          "grpcSettings": { "serviceName": "" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇭🇺 Венгрия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.195.111.15", "port": 443, "users": [{ "id": "c022defc-6823-4d37-bd35-2fa68b4210b7", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "5post-gate.x5.ru", "fingerprint": "firefox", "publicKey": "7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg", "shortId": "8ba12e75110b7a9c", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇨🇿 Чехия 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "141.133.175.223", "port": 443, "users": [{ "id": "02f783a4-e369-4788-b39c-c13405f5e90d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.google.com", "fingerprint": "chrome", "publicKey": "2aVNGUa_IIxLF20CVPqawvsT07NB2VRdXnU3UVnmynQ", "shortId": "3aa30d88e6e96596", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇧🇾 Беларусь 1",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "45.134.26.111", "port": 443, "users": [{ "id": "c473585d-5a81-4411-ba0a-4989bb872d3e", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.microsoft.com", "fingerprint": "chrome", "publicKey": "gF4-yV5o9B5mdhj5PRBj0OlR4opCqoIacuSGsET1F2E", "shortId": "b615b97fcca810f3", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -500,358 +1311,7 @@
     }
   },
   {
-    "remarks": "🇮🇳 Индия 1",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.149.114.147", "port": 8443, "users": [{ "id": "e5d59726-1fb5-4461-9adf-4ecccf706365", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "rbc.ru", "fingerprint": "firefox", "publicKey": "yOWj4KtHTjRo6SutNETYUgiNUXES0NY-PcpE9a4MqFM", "shortId": "0a3f199712e38f33", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇮🇳 Индия 2",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "31.59.149.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "yOWj4KtHTjRo6SutNETYUgiNUXES0NY-PcpE9a4MqFM", "shortId": "f084a3b523cf0aa7", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇷🇺 Россия",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "46.243.211.199", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "rbc.ru", "fingerprint": "firefox", "publicKey": "rZgu2lJcC2yrYnx66znee-Z75mW6m4TRfWt7_neoEVI", "shortId": "1c74cf626ef50bb3", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇹🇷 Турция",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.196.201.194", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "zii4nGNapnFKL6SN8GzWNqFlElBvUCUFUThEP0kFH04", "shortId": "e57932a42872a362", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇰🇿 Казахстан",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "31.58.93.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "unyuuAPGgKOlZDNcwmKK6re8DwGMp0Npy675AOhQTD8", "shortId": "84aa32f674cfe92f", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇧🇷 Бразилия",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "31.59.142.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "_0HnraldEtXmJMu7t3nEm8VmQXkMWF7dX1Dmz5KceSw", "shortId": "57f5917841a2178f", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇲🇩 Молдова 1",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "176.123.4.61", "port": 8443, "users": [{ "id": "b17ffa53-0c17-44aa-9e82-c5cb3297771d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "rbc.ru", "fingerprint": "firefox", "publicKey": "NtsJnsHr8a9mPDr0SPxdJlSRbdUVmR_-Rq5RVT-3KzA", "shortId": "58a6be9762c769f2", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇲🇩 Молдова 2",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "31.59.36.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "NtsJnsHr8a9mPDr0SPxdJlSRbdUVmR_-Rq5RVT-3KzA", "shortId": "9f4263b353817e73", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇨🇦 Канада",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.206.5.193", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "pPi-WO8qQFFZ9UJWNLW9YClbjcoAAZWJQ2_FM3Kjhz8", "shortId": "da147b40372a5fed", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇺🇸 США 1",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "154.193.55.82", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "EMS0wzISeSbEe4JABPD8EgDnyLXgDmrX4_lcfG6VVX4", "shortId": "c76ba2c2fb172e8b", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇺🇸 США 2",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "154.193.1.125", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "EMS0wzISeSbEe4JABPD8EgDnyLXgDmrX4_lcfG6VVX4", "shortId": "c76ba2c2fb172e8b", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇸🇪 Швеция",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.196.161.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "pPi-WO8qQFFZ9UJWNLW9YClbjcoAAZWJQ2_FM3Kjhz8", "shortId": "d3ee47fc2f553c44", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇭🇰 Гонконг",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "31.58.176.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "uWB8HfNVK_-9KtjDGjmBovnYxTh6wN95APRUBmCC30M", "shortId": "348fac7c65368555", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇯🇵 Япония",
+    "remarks": "🇯🇵 Япония 1",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -864,6 +1324,33 @@
         "protocol": "vless",
         "settings": { "vnext": [{ "address": "94.183.241.50", "port": 443, "users": [{ "id": "577f82d7-1048-4437-9a30-adb26731e37a", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
         "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "CwOLLTLuQN1SPzvenr_B_ErYYoOB_ScSvGvH-iYOtF8", "shortId": "f1af4b63b7e47b8a", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "🇧🇾 Беларусь 2",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "176.109.88.45", "port": 8446, "users": [{ "id": "848fbd46-e5ef-43f3-860b-21f4b4168e67", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "storage.yandex.net", "fingerprint": "firefox", "publicKey": "66-fz0xjwauydj29EfFKyPHjJ2CIGaGSsJ6hsB--zAc", "shortId": "de8d3223e7d85761", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
@@ -996,114 +1483,6 @@
     }
   },
   {
-    "remarks": "🇳🇱 Нидерланды (новый)",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "138.124.79.106", "port": 443, "users": [{ "id": "548cfc1c-68a2-40e4-a1f6-4e088cd4bb29", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.google.com", "fingerprint": "chrome", "publicKey": "uydr5IsIcraVfJB6DdSjhVueQqWAi5eg8XJJB81ziAA", "shortId": "ff60e4c2a9fcc955", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇧🇾 Беларусь",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "45.134.26.111", "port": 443, "users": [{ "id": "c473585d-5a81-4411-ba0a-4989bb872d3e", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.microsoft.com", "fingerprint": "chrome", "publicKey": "gF4-yV5o9B5mdhj5PRBj0OlR4opCqoIacuSGsET1F2E", "shortId": "b615b97fcca810f3", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇷🇴 Румыния",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "89.37.192.58", "port": 8443, "users": [{ "id": "48ad3fb3-6640-407a-a755-0c07b32e83cf", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.google.com", "fingerprint": "chrome", "publicKey": "hfmwdOSbfzzJjQVT1CDUrG9lBb7Bha1Rbrw4FZ9drlc", "shortId": "9931dbd009af7635", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
-    "remarks": "🇨🇿 Чехия",
-    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
-    "inbounds": [
-      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
-      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
-    ],
-    "log": { "loglevel": "info" },
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": { "vnext": [{ "address": "141.133.175.223", "port": 443, "users": [{ "id": "02f783a4-e369-4788-b39c-c13405f5e90d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
-        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "www.google.com", "fingerprint": "chrome", "publicKey": "2aVNGUa_IIxLF20CVPqawvsT07NB2VRdXnU3UVnmynQ", "shortId": "3aa30d88e6e96596", "allowInsecure": false } }
-      },
-      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
-      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
-        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
-        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
-      ]
-    }
-  },
-  {
     "remarks": "Белые списки 5 (Россия)",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
@@ -1131,7 +1510,7 @@
     }
   },
   {
-    "remarks": "Белые списки 6",
+    "remarks": "Белые списки 6 (Европа)",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -1158,7 +1537,7 @@
     }
   },
   {
-    "remarks": "Белые списки 7",
+    "remarks": "Белые списки 7 (Россия)",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -1185,7 +1564,7 @@
     }
   },
   {
-    "remarks": "Белые списки 8",
+    "remarks": "Белые списки 8 (Европа)",
     "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
     "inbounds": [
       { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
@@ -1225,6 +1604,605 @@
         "protocol": "vless",
         "settings": { "vnext": [{ "address": "84.201.159.127", "port": 443, "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
         "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "x5.ru", "fingerprint": "qq", "publicKey": "XChqsWmktuBNEH1-q6avX9DYzFzwp8KVSwPi44xxeQw", "shortId": "fd59995733b40e6e", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 10 (Англия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "cdn.apexpn.space", "port": 443, "users": [{ "id": "64ae3ae0-281f-49e0-96b7-8b36f75f122a", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "cdn.apexpn.space", "fingerprint": "chrome", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 11 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "188.72.110.17", "port": 443, "users": [{ "id": "57284239-1ceb-439f-826e-cd25fcc1c1c5", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "bss.wolfrzb.com", "fingerprint": "edge", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 12 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.177.111.70", "port": 18443, "users": [{ "id": "57284239-1ceb-439f-826e-cd25fcc1c1c5", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "reality",
+          "realitySettings": { "serverName": "yandex.ru", "fingerprint": "firefox", "publicKey": "TwMkcv1njZw5vFE-g5AUdpa_Y2vb_9393Nobv0Uqdi4", "shortId": "0123abcd", "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 13 (Нидерланды)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "media.morphai.cc", "port": 443, "users": [{ "id": "5238521b-c5dd-42af-870e-c174a2aaaafe", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "media.morphai.cc", "fingerprint": "qq", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 14 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "cdn-yc3.garagecloud.ru", "port": 443, "users": [{ "id": "3f9256ef-b4f1-474d-b761-c8879a48c9d8", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "cdn.tracker.yandex.net", "fingerprint": "edge", "alpn": ["h2"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 15 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "nbb--b88572bc.vpn.partners", "port": 8443, "users": [{ "id": "3f4af350-f639-4c67-9191-a9cdd5e59e22", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "nbb--b88572bc.vpn.partners", "fingerprint": "firefox", "alpn": ["h2"], "allowInsecure": false }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 16 (Англия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "95.163.232.249", "port": 443, "users": [{ "id": "f0cbfddd-772a-4c8f-b2e1-08cba9e247d8", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "wargm.ru", "fingerprint": "qq", "publicKey": "KSwAhIG_dYucte4eHyaRpywMZU0yaxXrdwDrUZ6qz2M", "shortId": "", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 17 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "176.109.92.154", "port": 443, "users": [{ "id": "3b59dbbc-74a8-0001-af17-5942bcbce4c8", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "max.ru", "fingerprint": "firefox", "publicKey": "w5zu8kLKRRX_UQTto3FX1knEjGZJbyY2NzcgiOfzIws", "shortId": "def012", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 18 (Нидерланды)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "cdn1.led.uni-gen.xyz", "port": 443, "users": [{ "id": "f4d9e894-437c-0001-8a1a-495403e80c92", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "cdn1.led.uni-gen.xyz", "fingerprint": "firefox", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 19 (Нидерланды)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "media-ru7.lbdnetwork.com", "port": 443, "users": [{ "id": "04b3ed78-61b5-42bb-9143-eeb70e64b5aa", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "media-ru3.lbdnetwork.com", "fingerprint": "firefox", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 20 (Нидерланды)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "31.177.111.234", "port": 443, "users": [{ "id": "2e8230fc-ce0e-4814-a0e9-87d1b9512752", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "apyc.ru", "fingerprint": "firefox", "publicKey": "rA7eOqDO79nAPa_Dhb2BECBblrZhRSJkOVyysKNFgzc", "shortId": "", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 21 (Германия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "vks10.glcdn.club", "port": 443, "users": [{ "id": "9ae0806c-6398-43da-a3c1-9275b461e9b5", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "vks10.glcdn.club", "fingerprint": "firefox", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 22 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "mts.ru.xanka.best", "port": 443, "users": [{ "id": "3455b5c1-81dc-4a55-827c-efff3e485011", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "mts.ru.xanka.best", "fingerprint": "firefox", "alpn": ["h2"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 23 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "cdn.vvsadmin.io", "port": 443, "users": [{ "id": "7f3a23e6-fa3a-4661-b591-6b4611f2351f", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "cdn.vvsadmin.io", "fingerprint": "chrome", "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 24 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "bs.lent.pro", "port": 443, "users": [{ "id": "6838c567-a5d3-48c3-92f5-b6748c514331", "flow": "", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "tls",
+          "tlsSettings": { "serverName": "bs.lent.pro", "fingerprint": "firefox", "alpn": ["h2", "http/1.1"], "allowInsecure": false },
+          "xhttpSettings": { "mode": "packet-up" }
+        }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 25 (Россия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "217.16.27.113", "port": 443, "users": [{ "id": "982c4e24-7ea8-4e2a-bbb5-898eb9d19158", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "max.ru", "fingerprint": "chrome", "publicKey": "AiG06E-jizo9xtBbulKQvdQqhZfobZJBTQIKkaDjaiU", "shortId": "a1b2c3d4e5", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 26 (Германия)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "russia1.telega.now", "port": 443, "users": [{ "id": "04c60171-23a2-4b17-bc08-7487c031361e", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "graphql-web.kinopoisk.ru", "fingerprint": "qq", "publicKey": "e-KPwL3RuDctEK735FK1t7LxsWc39JjHAoPSprWLWy4", "shortId": "4bbf0da8e5069c44", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 27 (Латвия 1)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "158.160.242.113", "port": 443, "users": [{ "id": "04c60171-23a2-4b17-bc08-7487c031361e", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "avatars.mds.yandex.net", "fingerprint": "qq", "publicKey": "Qlo8siDwiUSIoPffa2d8BpltMB1UX2Ukqe4GU4nQtFQ", "shortId": "", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 28 (Латвия 2)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "russia1.telega.now", "port": 443, "users": [{ "id": "04c60171-23a2-4b17-bc08-7487c031361e", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "max.ru", "fingerprint": "qq", "publicKey": "425Ufoxs_hyU7WOXXgKXHxXEqj3BrYY6dxrYPnG3UFU", "shortId": "", "allowInsecure": false } }
+      },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
+      { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        { "protocol": ["bittorrent"], "outboundTag": "block", "type": "field" },
+        { "domain": ["domain:ru", "domain:xn--p1ai", "geosite:category-ru"], "outboundTag": "direct", "type": "field" },
+        { "ip": ["geoip:ru"], "outboundTag": "direct", "type": "field" }
+      ]
+    }
+  },
+  {
+    "remarks": "Белые списки 29 (Латвия 3)",
+    "dns": { "servers": ["https://8.8.8.8/dns-query", "https://8.8.4.4/dns-query"], "queryStrategy": "UseIP" },
+    "inbounds": [
+      { "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "auth": "noauth", "udp": true, "userLevel": 8 }, "sniffing": { "destOverride": ["http", "tls"], "enabled": true, "routeOnly": false }, "tag": "socks" },
+      { "listen": "127.0.0.1", "port": 10809, "protocol": "http", "settings": { "userLevel": 8 }, "tag": "http" }
+    ],
+    "log": { "loglevel": "info" },
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": { "vnext": [{ "address": "russia1.telega.now", "port": 443, "users": [{ "id": "04c60171-23a2-4b17-bc08-7487c031361e", "flow": "xtls-rprx-vision", "encryption": "none", "level": 8 }] }] },
+        "streamSettings": { "network": "tcp", "security": "reality", "realitySettings": { "serverName": "max.ru", "fingerprint": "qq", "publicKey": "425Ufoxs_hyU7WOXXgKXHxXEqj3BrYY6dxrYPnG3UFU", "shortId": "", "allowInsecure": false } }
       },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIP" } },
       { "tag": "block", "protocol": "blackhole", "settings": { "response": { "type": "http" } } }
