@@ -1441,5 +1441,196 @@
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
     ]
+  },
+{"remarks":"���� Россия","dns":{"tag":"dns_inbound","servers":["https://one.one.one.one/dns-query","https://dns.google/dns-query",{"address":"https://common.dot.dns.yandex.net/dns-query","domains":["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"]}],"disableCache":false,"queryStrategy":"UseIP","disableFallback":false},"routing":{"rules":[{"type":"field","protocol":["bittorrent"],"outboundTag":"direct"},{"port":"53","network":"udp","outboundTag":"dns-out"},{"domain":["domain:one.one","domain:dns.google"],"outboundTag":"proxy"},{"ip":["1.1.1.1","1.0.0.1","8.8.8.8","8.8.4.4"],"outboundTag":"proxy"},{"domain":["domain:yandex.net"],"outboundTag":"direct"},{"ip":["77.88.8.8","77.88.8.1"],"outboundTag":"direct"},{"domain":["geosite:private"],"outboundTag":"direct"},{"ip":["geoip:private"],"outboundTag":"direct"},{"domain":["domain:habr.com","domain:jut.su","4pda"],"outboundTag":"proxy"},{"type":"field","domain":["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],"outboundTag":"direct"}],"domainMatcher":"hybrid","domainStrategy":"IPIfNonMatch"},"inbounds":[{"tag":"socks","port":10808,"listen":"127.0.0.1","protocol":"socks","settings":{"udp":true,"auth":"noauth"},"sniffing":{"enabled":true,"routeOnly":false,"destOverride":["http","tls","quic"]}},{"tag":"http","port":10809,"listen":"127.0.0.1","protocol":"http","settings":{"allowTransparent":false},"sniffing":{"enabled":true,"routeOnly":false,"destOverride":["http","tls","quic"]}}],"outbounds":[{"tag":"proxy","protocol":"vless","settings":{"vnext":[{"address":"russia.anonch.org","port":443,"users":[{"id":"b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption":"none","flow":"xtls-rprx-vision"}]}]},"streamSettings":{"network":"tcp","security":"reality","tcpSettings":{"header":{"type":"none"}},"realitySettings":{"serverName":"russia.anonch.org","fingerprint":"firefox","publicKey":"0T2odrhTIJG7wkM9fdqV_MybfgoTbjISdgD8hA7zO2E","shortId":"f74365ecc3f20122","spiderX":"/"}}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIPv4"}},{"tag":"block","protocol":"blackhole"},{"tag":"dns-out","protocol":"dns"}]},
+  {
+    "remarks": "🇷🇺 Россия",
+    "dns": {
+      "tag": "dns_inbound",
+      "servers": [
+        "https://one.one.one.one/dns-query",
+        "https://dns.google/dns-query",
+        {
+          "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": [
+            "regexp:^.*\\.ru$",
+            "regexp:^.*\\.su$",
+            "regexp:^.*\\.рф$",
+            "geosite:category-ru"
+          ]
+        }
+      ],
+      "disableCache": false,
+      "queryStrategy": "UseIP",
+      "disableFallback": false
+    },
+    "routing": {
+      "rules": [
+        {
+          "type": "field",
+          "protocol": [
+            "bittorrent"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "port": "53",
+          "network": "udp",
+          "outboundTag": "dns-out"
+        },
+        {
+          "domain": [
+            "domain:one.one",
+            "domain:dns.google"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "ip": [
+            "1.1.1.1",
+            "1.0.0.1",
+            "8.8.8.8",
+            "8.8.4.4"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "domain": [
+            "domain:yandex.net"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "ip": [
+            "77.88.8.8",
+            "77.88.8.1"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "ip": [
+            "geoip:private"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "domain": [
+            "domain:habr.com",
+            "domain:jut.su",
+            "4pda"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "regexp:^.*\\.ru$",
+            "regexp:^.*\\.su$",
+            "regexp:^.*\\.рф$",
+            "geosite:category-ru"
+          ],
+          "outboundTag": "direct"
+        }
+      ],
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "settings": {
+          "udp": true,
+          "auth": "noauth"
+        },
+        "sniffing": {
+          "enabled": true,
+          "routeOnly": false,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        },
+        "sniffing": {
+          "enabled": true,
+          "routeOnly": false,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "russia.anonch.org",
+              "port": 443,
+              "users": [
+                {
+                  "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "tcpSettings": {
+            "header": {
+              "type": "none"
+            }
+          },
+          "realitySettings": {
+            "serverName": "russia.anonch.org",
+            "fingerprint": "firefox",
+            "publicKey": "0T2odrhTIJG7wkM9fdqV_MybfgoTbjISdgD8hA7zO2E",
+            "shortId": "f74365ecc3f20122",
+            "spiderX": "/"
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIPv4"
+        }
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      },
+      {
+        "tag": "dns-out",
+        "protocol": "dns"
+      }
+    ]
   }
 ]
