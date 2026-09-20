@@ -1,6 +1,6 @@
 [
     {
-    "remarks": "🇭🇺 Венгрия 🔥",
+    "remarks": "🇭🇺 Венгрия",
     "dns": {
       "tag": "dns_inbound",
       "servers": [
@@ -359,7 +359,7 @@
     ]
   },
     {
-    "remarks": "🇩🇪 Германия 🔥",
+    "remarks": "🇩🇪 Германия",
     "dns": {
       "tag": "dns_inbound",
       "servers": [
