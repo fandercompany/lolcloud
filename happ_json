@@ -1,31 +1,101 @@
 [
-  {
-    "remarks": "🇭🇺 Венгрия | ULTRA FAST",
+    {
+    "remarks": "🇭🇺 Венгрия 🔥",
     "dns": {
-      "servers": ["1.1.1.1", "8.8.8.8", "8.8.4.4"],
-      "queryStrategy": "UseIPv4"
+      "tag": "dns_inbound",
+      "servers": [
+        "https://one.one.one.one/dns-query",
+        "https://dns.google/dns-query",
+        {
+          "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": [
+            "regexp:^.*\\.ru$",
+            "regexp:^.*\\.su$",
+            "regexp:^.*\\.рф$",
+            "geosite:category-ru"
+          ]
+        }
+      ],
+      "disableCache": false,
+      "queryStrategy": "UseIP",
+      "disableFallback": false
     },
     "routing": {
       "rules": [
         {
           "type": "field",
-          "domain": [
-            "domain:ru","domain:su","domain:xn--p1ai","domain:moscow","domain:ya.cc",
-            "domain:yandex.com","domain:yandex.net","domain:yango.com","domain:vk.com",
-            "domain:vk.cc","domain:mvk.com","domain:mycdn.me","domain:my.com","domain:my.games",
-            "domain:ok.me","domain:kaspersky.com","domain:ozon.com","domain:ozon.by","domain:ozon.kz",
-            "domain:wildberries.by","domain:wildberries.kz","domain:2gis.com","domain:magnit.com",
-            "domain:fix-price.com","domain:x5.tech","domain:megafon.com","domain:moex.com",
-            "domain:okko.tv","domain:okko.sport","domain:boosty.to","domain:lenta.com",
-            "domain:meduza.io","domain:premier.one","domain:hh.by","domain:hh.kz",
-            "domain:mosmetro.tech","domain:avs.io"
+          "protocol": [
+            "bittorrent"
           ],
           "outboundTag": "direct"
         },
-        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" }
+        {
+          "port": "53",
+          "network": "udp",
+          "outboundTag": "dns-out"
+        },
+        {
+          "domain": [
+            "domain:one.one",
+            "domain:dns.google"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "ip": [
+            "1.1.1.1",
+            "1.0.0.1",
+            "8.8.8.8",
+            "8.8.4.4"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "domain": [
+            "domain:yandex.net"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "ip": [
+            "77.88.8.8",
+            "77.88.8.1"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "ip": [
+            "geoip:private"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "domain": [
+            "domain:habr.com",
+            "domain:jut.su",
+            "4pda"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "regexp:^.*\\.ru$",
+            "regexp:^.*\\.su$",
+            "regexp:^.*\\.рф$",
+            "geosite:category-ru"
+          ],
+          "outboundTag": "direct"
+        }
       ],
       "domainMatcher": "hybrid",
-      "domainStrategy": "AsIs"
+      "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
       {
@@ -33,8 +103,37 @@
         "port": 10808,
         "listen": "127.0.0.1",
         "protocol": "socks",
-        "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": true, "destOverride": ["http","tls","quic"] }
+        "settings": {
+          "udp": true,
+          "auth": "noauth"
+        },
+        "sniffing": {
+          "enabled": true,
+          "routeOnly": false,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        },
+        "sniffing": {
+          "enabled": true,
+          "routeOnly": false,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
       }
     ],
     "outbounds": [
@@ -44,10 +143,14 @@
         "settings": {
           "vnext": [
             {
-              "address": "2.26.139.201",
+              "address": "2.26.139.202",
               "port": 443,
               "users": [
-                { "id": "bab61ae8-b04f-474a-9268-d6becc3ca487", "encryption": "none", "flow": "xtls-rprx-vision" }
+                {
+                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
               ]
             }
           ]
@@ -55,18 +158,35 @@
         "streamSettings": {
           "network": "tcp",
           "security": "reality",
-          "tcpSettings": { "header": { "type": "none" } },
+          "tcpSettings": {
+            "header": {
+              "type": "none"
+            }
+          },
           "realitySettings": {
-            "serverName": "kukuruza.mycdn-me.ru",
-            "shortId": "e17b4d9a8c1f3526",
-            "publicKey": "-qRasoN1QIcSdRL937b6s-Y2qOb-9OFmlaHBi7UcOSM",
+            "serverName": "cdn.tbank.ru",
             "fingerprint": "qq",
+            "publicKey": "-qRasoN1QIcSdRL937b6s-Y2qOb-9OFmlaHBi7UcOSM",
+            "shortId": "e17b4d9a8c1f3526",
             "spiderX": "/"
           }
         }
       },
-      { "tag": "direct", "protocol": "freedom" },
-      { "tag": "block", "protocol": "blackhole" }
+      {
+        "tag": "direct",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIPv4"
+        }
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      },
+      {
+        "tag": "dns-out",
+        "protocol": "dns"
+      }
     ]
   },
   {
@@ -238,60 +358,194 @@
       { "tag": "block", "protocol": "blackhole" }
     ]
   },
-  {
-    "remarks": "🇩🇪 Германия | ULTRA FAST",
-    "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
+    {
+    "remarks": "🇩🇪 Германия 🔥",
+    "dns": {
+      "tag": "dns_inbound",
+      "servers": [
+        "https://one.one.one.one/dns-query",
+        "https://dns.google/dns-query",
+        {
+          "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": [
+            "regexp:^.*\\.ru$",
+            "regexp:^.*\\.su$",
+            "regexp:^.*\\.рф$",
+            "geosite:category-ru"
+          ]
+        }
+      ],
+      "disableCache": false,
+      "queryStrategy": "UseIP",
+      "disableFallback": false
+    },
     "routing": {
       "rules": [
         {
           "type": "field",
-          "domain": [
-            "domain:ru","domain:su","domain:xn--p1ai","domain:moscow","domain:ya.cc",
-            "domain:yandex.com","domain:yandex.net","domain:yango.com","domain:vk.com",
-            "domain:vk.cc","domain:mvk.com","domain:mycdn.me","domain:my.com","domain:my.games",
-            "domain:ok.me","domain:kaspersky.com","domain:ozon.com","domain:ozon.by","domain:ozon.kz",
-            "domain:wildberries.by","domain:wildberries.kz","domain:2gis.com","domain:magnit.com",
-            "domain:fix-price.com","domain:x5.tech","domain:megafon.com","domain:moex.com",
-            "domain:okko.tv","domain:okko.sport","domain:boosty.to","domain:lenta.com",
-            "domain:meduza.io","domain:premier.one","domain:hh.by","domain:hh.kz",
-            "domain:mosmetro.tech","domain:avs.io"
+          "protocol": [
+            "bittorrent"
           ],
           "outboundTag": "direct"
         },
-        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" }
+        {
+          "port": "53",
+          "network": "udp",
+          "outboundTag": "dns-out"
+        },
+        {
+          "domain": [
+            "domain:one.one",
+            "domain:dns.google"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "ip": [
+            "1.1.1.1",
+            "1.0.0.1",
+            "8.8.8.8",
+            "8.8.4.4"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "domain": [
+            "domain:yandex.net"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "ip": [
+            "77.88.8.8",
+            "77.88.8.1"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "domain": [
+            "geosite:private"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "ip": [
+            "geoip:private"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "domain": [
+            "domain:habr.com",
+            "domain:jut.su",
+            "4pda"
+          ],
+          "outboundTag": "proxy"
+        },
+        {
+          "type": "field",
+          "domain": [
+            "regexp:^.*\\.ru$",
+            "regexp:^.*\\.su$",
+            "regexp:^.*\\.рф$",
+            "geosite:category-ru"
+          ],
+          "outboundTag": "direct"
+        }
       ],
-      "domainMatcher": "hybrid","domainStrategy": "AsIs"
+      "domainMatcher": "hybrid",
+      "domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
       {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
-        "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": true, "destOverride": ["http","tls","quic"] }
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "settings": {
+          "udp": true,
+          "auth": "noauth"
+        },
+        "sniffing": {
+          "enabled": true,
+          "routeOnly": false,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        },
+        "sniffing": {
+          "enabled": true,
+          "routeOnly": false,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
       }
     ],
     "outbounds": [
       {
-        "tag": "proxy","protocol": "vless",
+        "tag": "proxy",
+        "protocol": "vless",
         "settings": {
           "vnext": [
             {
-              "address": "2.26.135.220","port": 443,
-              "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }]
+              "address": "2.26.135.231",
+              "port": 443,
+              "users": [
+                {
+                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
             }
           ]
         },
         "streamSettings": {
-          "network": "tcp","security": "reality",
-          "tcpSettings": { "header": { "type": "none" } },
+          "network": "tcp",
+          "security": "reality",
+          "tcpSettings": {
+            "header": {
+              "type": "none"
+            }
+          },
           "realitySettings": {
-            "serverName": "cdn1.mycdn-me.ru","shortId": "a1f9c0e21d7b6485",
-            "publicKey": "dQDrcZt7Zhdeid6qe9zSTEXwicrwq-wW7LAy2vN_YT8",
-            "fingerprint": "qq","spiderX": "/"
+            "serverName": "promo-digital.wb.ru",
+            "fingerprint": "qq",
+            "publicKey": "hO2ivrVA9pHjOiR3E_mpvBA8Vya5lrks-jfnla2bBHQ",
+            "shortId": "a1f9c0e21d7b6485",
+            "spiderX": "/"
           }
         }
       },
-      { "tag": "direct", "protocol": "freedom" },
-      { "tag": "block", "protocol": "blackhole" }
+      {
+        "tag": "direct",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIPv4"
+        }
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      },
+      {
+        "tag": "dns-out",
+        "protocol": "dns"
+      }
     ]
   },
   {
