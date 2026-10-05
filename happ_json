@@ -3,83 +3,30 @@
     "remarks": "Авто",
     "dns": {
       "servers": [
-        {
-          "address": "https://8.8.8.8/dns-query",
-          "skipFallback": false
-        },
-        {
-          "address": "https://9.9.9.9/dns-query",
-          "skipFallback": false
-        },
-        {
-          "address": "https://1.1.1.1/dns-query",
-          "skipFallback": false
-        }
+        { "address": "https://8.8.8.8/dns-query", "skipFallback": false },
+        { "address": "https://9.9.9.9/dns-query", "skipFallback": false },
+        { "address": "https://1.1.1.1/dns-query", "skipFallback": false }
       ],
       "queryStrategy": "UseIPv4"
     },
-    "log": {
-      "loglevel": "warning"
-    },
+    "log": { "loglevel": "warning" },
     "routing": {
       "rules": [
-        {
-          "type": "field",
-          "protocol": [
-            "bittorrent"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "inboundTag": [
-            "socks",
-            "http"
-          ],
-          "balancerTag": "Balancer"
-        },
-        {
-          "type": "field",
-          "inboundTag": [
-            "entry-whitelist-fallback"
-          ],
-          "balancerTag": "WhitelistBalancer"
-        }
+        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" },
+        { "type": "field", "network": "tcp,udp", "inboundTag": ["socks","http"], "balancerTag": "Balancer" },
+        { "type": "field", "inboundTag": ["entry-whitelist-fallback"], "balancerTag": "WhitelistBalancer" }
       ],
       "balancers": [
         {
           "tag": "Balancer",
-          "selector": [
-            "bridge"
-          ],
-          "strategy": {
-            "type": "leastLoad",
-            "settings": {
-              "expected": 6,
-              "baselines": [
-                "1s"
-              ],
-              "tolerance": 0.5
-            }
-          },
+          "selector": ["bridge"],
+          "strategy": { "type": "leastLoad", "settings": { "expected": 6, "baselines": ["1s"], "tolerance": 0.5 } },
           "fallbackTag": "loop-to-whitelist"
         },
         {
           "tag": "WhitelistBalancer",
-          "selector": [
-            "whitelist"
-          ],
-          "strategy": {
-            "type": "leastLoad",
-            "settings": {
-              "expected": 3,
-              "baselines": [
-                "1s"
-              ],
-              "tolerance": 0.5
-            }
-          },
+          "selector": ["whitelist"],
+          "strategy": { "type": "leastLoad", "settings": { "expected": 3, "baselines": ["1s"], "tolerance": 0.5 } },
           "fallbackTag": "direct"
         }
       ],
@@ -88,292 +35,89 @@
     },
     "inbounds": [
       {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "settings": {
-          "udp": true,
-          "auth": "noauth"
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
+        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+        "settings": { "udp": true, "auth": "noauth" },
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
       },
       {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
+        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "settings": { "allowTransparent": false },
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
       },
       {
-        "tag": "entry-whitelist-fallback",
-        "port": 10803,
-        "listen": "127.0.0.1",
-        "protocol": "dokodemo-door",
-        "settings": {
-          "port": 0,
-          "address": "127.0.0.1",
-          "network": "tcp,udp"
-        }
+        "tag": "entry-whitelist-fallback","port": 10803,"listen": "127.0.0.1","protocol": "dokodemo-door",
+        "settings": { "port": 0, "address": "127.0.0.1", "network": "tcp,udp" }
       }
     ],
     "outbounds": [
       {
-        "tag": "bridge",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "quillnectarhazel.flintrock.dev",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "quillnectarhazel.flintrock.dev",
-            "publicKey": "6Q0zTkdFE6V4l4YnVXwFHpTnTt_sqqgZOaMDq_vzEUQ",
-            "shortId": "f3bc8a3d224db81f",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge","protocol": "vless",
+        "settings": { "vnext": [ { "address": "quillnectarhazel.flintrock.dev","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "quillnectarhazel.flintrock.dev","publicKey": "6Q0zTkdFE6V4l4YnVXwFHpTnTt_sqqgZOaMDq_vzEUQ","shortId": "f3bc8a3d224db81f","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-2",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "laggeddrenchcurly.brackenmount.com",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "laggeddrenchcurly.brackenmount.com",
-            "publicKey": "WAiUIB-B_atmuRIEIt3ktYfQcG5aswZz8lg1NLiq1U0",
-            "shortId": "ef995c2d2092537f",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-2","protocol": "vless",
+        "settings": { "vnext": [ { "address": "laggeddrenchcurly.brackenmount.com","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "laggeddrenchcurly.brackenmount.com","publicKey": "WAiUIB-B_atmuRIEIt3ktYfQcG5aswZz8lg1NLiq1U0","shortId": "ef995c2d2092537f","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-3",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "washedroutineream.coppermitten.one",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "washedroutineream.coppermitten.one",
-            "publicKey": "a2d3SdlFYm_JVsZ5Jdm7tefcXgsp9u5rDKL4SpMwAGY",
-            "shortId": "394742e7072b2c91",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-3","protocol": "vless",
+        "settings": { "vnext": [ { "address": "washedroutineream.coppermitten.one","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "washedroutineream.coppermitten.one","publicKey": "a2d3SdlFYm_JVsZ5Jdm7tefcXgsp9u5rDKL4SpMwAGY","shortId": "394742e7072b2c91","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-4",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "petitefrettedalumni.mauvebasket.live",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "petitefrettedalumni.mauvebasket.live",
-            "publicKey": "nBg0d3OkWxHDqhJACgYoIgS88sCzDjf_4XkxwTgx50I",
-            "shortId": "560c90e0a4673ad2",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-4","protocol": "vless",
+        "settings": { "vnext": [ { "address": "petitefrettedalumni.mauvebasket.live","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "petitefrettedalumni.mauvebasket.live","publicKey": "nBg0d3OkWxHDqhJACgYoIgS88sCzDjf_4XkxwTgx50I","shortId": "560c90e0a4673ad2","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-5",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "sableivorygleam.rivetpress.me",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "sableivorygleam.rivetpress.me",
-            "publicKey": "niL0fb-4IaVHr5VCg2yN_5wDTNYEq9W8wi7pDWLPcVg",
-            "shortId": "7505bfa3b6b933e6",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-5","protocol": "vless",
+        "settings": { "vnext": [ { "address": "sableivorygleam.rivetpress.me","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "sableivorygleam.rivetpress.me","publicKey": "niL0fb-4IaVHr5VCg2yN_5wDTNYEq9W8wi7pDWLPcVg","shortId": "7505bfa3b6b933e6","fingerprint": "firefox" } }
       },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      },
-      {
-        "tag": "loop-to-whitelist",
-        "protocol": "loopback",
-        "settings": {
-          "inboundTag": "entry-whitelist-fallback"
-        }
-      }
+      { "tag": "direct", "protocol": "freedom" },
+      { "tag": "block", "protocol": "blackhole" },
+      { "tag": "loop-to-whitelist", "protocol": "loopback", "settings": { "inboundTag": "entry-whitelist-fallback" } }
     ],
     "burstObservatory": {
       "pingConfig": {
-        "timeout": "5s",
-        "interval": "1m",
-        "sampling": 2,
-        "httpMethod": "HEAD",
-        "destination": "http://www.gstatic.com/generate_204"
+        "timeout": "5s","interval": "1m","sampling": 2,
+        "httpMethod": "HEAD","destination": "http://www.gstatic.com/generate_204"
       },
-      "subjectSelector": [
-        "bridge",
-        "whitelist"
-      ]
+      "subjectSelector": ["bridge","whitelist"]
     }
   },
   {
     "remarks": "Европа - Авто",
     "dns": {
       "servers": [
-        {
-          "address": "https://8.8.8.8/dns-query",
-          "skipFallback": false
-        },
-        {
-          "address": "https://9.9.9.9/dns-query",
-          "skipFallback": false
-        },
-        {
-          "address": "https://1.1.1.1/dns-query",
-          "skipFallback": false
-        }
+        { "address": "https://8.8.8.8/dns-query", "skipFallback": false },
+        { "address": "https://9.9.9.9/dns-query", "skipFallback": false },
+        { "address": "https://1.1.1.1/dns-query", "skipFallback": false }
       ],
       "queryStrategy": "UseIPv4"
     },
-    "log": {
-      "loglevel": "warning"
-    },
+    "log": { "loglevel": "warning" },
     "routing": {
       "rules": [
-        {
-          "type": "field",
-          "protocol": [
-            "bittorrent"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "inboundTag": [
-            "socks",
-            "http"
-          ],
-          "balancerTag": "Balancer"
-        }
+        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" },
+        { "type": "field", "network": "tcp,udp", "inboundTag": ["socks","http"], "balancerTag": "Balancer" }
       ],
       "balancers": [
         {
           "tag": "Balancer",
-          "selector": [
-            "bridge"
-          ],
-          "strategy": {
-            "type": "leastLoad",
-            "settings": {
-              "expected": 6,
-              "baselines": [
-                "1s"
-              ],
-              "tolerance": 0.5
-            }
-          },
+          "selector": ["bridge"],
+          "strategy": { "type": "leastLoad", "settings": { "expected": 6, "baselines": ["1s"], "tolerance": 0.5 } },
           "fallbackTag": "direct"
         }
       ],
@@ -382,427 +126,92 @@
     },
     "inbounds": [
       {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "settings": {
-          "udp": true,
-          "auth": "noauth"
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
+        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+        "settings": { "udp": true, "auth": "noauth" },
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
       },
       {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
+        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "settings": { "allowTransparent": false },
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
       }
     ],
     "outbounds": [
       {
-        "tag": "bridge",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "quillnectarhazel.flintrock.dev",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "quillnectarhazel.flintrock.dev",
-            "publicKey": "6Q0zTkdFE6V4l4YnVXwFHpTnTt_sqqgZOaMDq_vzEUQ",
-            "shortId": "f3bc8a3d224db81f",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge","protocol": "vless",
+        "settings": { "vnext": [ { "address": "quillnectarhazel.flintrock.dev","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "quillnectarhazel.flintrock.dev","publicKey": "6Q0zTkdFE6V4l4YnVXwFHpTnTt_sqqgZOaMDq_vzEUQ","shortId": "f3bc8a3d224db81f","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-2",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "laggeddrenchcurly.brackenmount.com",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "laggeddrenchcurly.brackenmount.com",
-            "publicKey": "WAiUIB-B_atmuRIEIt3ktYfQcG5aswZz8lg1NLiq1U0",
-            "shortId": "ef995c2d2092537f",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-2","protocol": "vless",
+        "settings": { "vnext": [ { "address": "laggeddrenchcurly.brackenmount.com","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "laggeddrenchcurly.brackenmount.com","publicKey": "WAiUIB-B_atmuRIEIt3ktYfQcG5aswZz8lg1NLiq1U0","shortId": "ef995c2d2092537f","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-3",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "washedroutineream.coppermitten.one",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "washedroutineream.coppermitten.one",
-            "publicKey": "a2d3SdlFYm_JVsZ5Jdm7tefcXgsp9u5rDKL4SpMwAGY",
-            "shortId": "394742e7072b2c91",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-3","protocol": "vless",
+        "settings": { "vnext": [ { "address": "washedroutineream.coppermitten.one","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "washedroutineream.coppermitten.one","publicKey": "a2d3SdlFYm_JVsZ5Jdm7tefcXgsp9u5rDKL4SpMwAGY","shortId": "394742e7072b2c91","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-4",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "petitefrettedalumni.mauvebasket.live",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "petitefrettedalumni.mauvebasket.live",
-            "publicKey": "nBg0d3OkWxHDqhJACgYoIgS88sCzDjf_4XkxwTgx50I",
-            "shortId": "560c90e0a4673ad2",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-4","protocol": "vless",
+        "settings": { "vnext": [ { "address": "petitefrettedalumni.mauvebasket.live","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "petitefrettedalumni.mauvebasket.live","publicKey": "nBg0d3OkWxHDqhJACgYoIgS88sCzDjf_4XkxwTgx50I","shortId": "560c90e0a4673ad2","fingerprint": "firefox" } }
       },
       {
-        "tag": "bridge-5",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "sableivorygleam.rivetpress.me",
-              "port": 443,
-              "users": [
-                {
-                  "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "tcpSettings": {},
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "sableivorygleam.rivetpress.me",
-            "publicKey": "niL0fb-4IaVHr5VCg2yN_5wDTNYEq9W8wi7pDWLPcVg",
-            "shortId": "7505bfa3b6b933e6",
-            "fingerprint": "firefox"
-          }
-        }
+        "tag": "bridge-5","protocol": "vless",
+        "settings": { "vnext": [ { "address": "sableivorygleam.rivetpress.me","port": 443,
+          "users": [{ "id": "8286cf3b-bb41-4d6b-a350-55a6e6991826","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "sableivorygleam.rivetpress.me","publicKey": "niL0fb-4IaVHr5VCg2yN_5wDTNYEq9W8wi7pDWLPcVg","shortId": "7505bfa3b6b933e6","fingerprint": "firefox" } }
       },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
+      { "tag": "direct", "protocol": "freedom" },
+      { "tag": "block", "protocol": "blackhole" }
     ],
     "burstObservatory": {
       "pingConfig": {
-        "timeout": "5s",
-        "interval": "1m",
-        "sampling": 2,
-        "httpMethod": "HEAD",
-        "destination": "http://www.gstatic.com/generate_204"
+        "timeout": "5s","interval": "1m","sampling": 2,
+        "httpMethod": "HEAD","destination": "http://www.gstatic.com/generate_204"
       },
-      "subjectSelector": [
-        "bridge"
-      ]
+      "subjectSelector": ["bridge"]
     }
   },
   {
-    "remarks": "🇭🇺 Венгрия",
-    "dns": {
-      "tag": "dns_inbound",
-      "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$",
-            "regexp:^.*\\.su$",
-            "regexp:^.*\\.рф$",
-            "geosite:category-ru"
-          ]
-        }
-      ],
-      "disableCache": false,
-      "queryStrategy": "UseIP",
-      "disableFallback": false
-    },
-    "routing": {
-      "rules": [
-        {
-          "type": "field",
-          "protocol": [
-            "bittorrent"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "port": "53",
-          "network": "udp",
-          "outboundTag": "dns-out"
-        },
-        {
-          "domain": [
-            "domain:one.one",
-            "domain:dns.google"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "ip": [
-            "1.1.1.1",
-            "1.0.0.1",
-            "8.8.8.8",
-            "8.8.4.4"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "domain": [
-            "domain:yandex.net"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "77.88.8.8",
-            "77.88.8.1"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "geosite:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "geoip:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "domain:habr.com",
-            "domain:jut.su",
-            "4pda"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "type": "field",
-          "domain": [
-            "regexp:^.*\\.ru$",
-            "regexp:^.*\\.su$",
-            "regexp:^.*\\.рф$",
-            "geosite:category-ru"
-          ],
-          "outboundTag": "direct"
-        }
-      ],
-      "domainMatcher": "hybrid",
-      "domainStrategy": "IPIfNonMatch"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "settings": {
-          "udp": true,
-          "auth": "noauth"
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "2.26.139.202",
-              "port": 443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "tcpSettings": {
-            "header": {
-              "type": "none"
-            }
-          },
-          "realitySettings": {
-            "serverName": "cdn.tbank.ru",
-            "fingerprint": "qq",
-            "publicKey": "-qRasoN1QIcSdRL937b6s-Y2qOb-9OFmlaHBi7UcOSM",
-            "shortId": "e17b4d9a8c1f3526",
-            "spiderX": "/"
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIPv4"
-        }
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      },
-      {
-        "tag": "dns-out",
-        "protocol": "dns"
-      }
-    ]
-  },
-  {
-    "remarks": "🇺🇸 США | ULTRA FAST",
-    "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
+    "remarks": "🇭🇺 Венгрия 🔥",
+    "dns": {},
     "routing": {
       "rules": [
         {
           "type": "field",
           "domain": [
-            "domain:ru","domain:su","domain:xn--p1ai","domain:moscow","domain:ya.cc",
-            "domain:yandex.com","domain:yandex.net","domain:yango.com","domain:vk.com",
-            "domain:vk.cc","domain:mvk.com","domain:mycdn.me","domain:my.com","domain:my.games",
-            "domain:ok.me","domain:kaspersky.com","domain:ozon.com","domain:ozon.by","domain:ozon.kz",
-            "domain:wildberries.by","domain:wildberries.kz","domain:2gis.com","domain:magnit.com",
-            "domain:fix-price.com","domain:x5.tech","domain:megafon.com","domain:moex.com",
-            "domain:okko.tv","domain:okko.sport","domain:boosty.to","domain:lenta.com",
-            "domain:meduza.io","domain:premier.one","domain:hh.by","domain:hh.kz",
-            "domain:mosmetro.tech","domain:avs.io"
+            "domain:2gis.ru","domain:ads.x5.ru","domain:2gis.com","domain:aif.ru","domain:aeroflot.ru",
+            "domain:avito.ru","domain:beeline.ru","domain:burgerkingrus.ru","domain:dellin.ru","domain:drive2.ru",
+            "domain:dzen.ru","domain:flypobeda.ru","domain:forbes.ru","domain:gazeta.ru","domain:gazprombank.ru",
+            "domain:gismeteo.ru","domain:gosuslugi.ru","domain:hh.ru","domain:kontur.ru","domain:kontur.host",
+            "domain:kp.ru","domain:kuper.ru","domain:lenta.ru","domain:mail.ru","domain:max.ru",
+            "domain:megamarket.ru","domain:megamarket.tech","domain:megafon.ru","domain:moex.com","domain:motivtelecom.ru",
+            "domain:ozon.ru","domain:pervye.ru","domain:psbank.ru","domain:rambler.ru","domain:rambler-co.ru",
+            "domain:rbc.ru","domain:reg.ru","domain:reviews.2gis.com","domain:rg.ru","domain:ria.ru",
+            "domain:ruwiki.ru","domain:rustore.ru","domain:rutube.ru","domain:rzd.ru","domain:sirena-travel.ru",
+            "domain:sravni.ru","domain:t-j.ru","domain:t2.ru","domain:tank-online.com","domain:taximaxim.ru",
+            "domain:tildaapi.com","domain:tns-counter.ru","domain:trvl.yandex.net","domain:tutu.ru","domain:vk.com",
+            "domain:vk.ru","domain:vkvideo.ru","domain:vtb.ru","domain:x5.ru","domain:ya.ru",
+            "domain:yandex.ru","domain:yandex.net","domain:yandex.com","domain:yastatic.net","domain:yandexcloud.net",
+            "full:go.yandex","full:ru.ruwiki.ru",
+            "domain:xn--90acagbhgpca7c8c7f.xn--p1ai","domain:xn--80ajghhoc2aj1c8b.xn--p1ai",
+            "domain:xn--90aivcdt6dxbc.xn--p1ai","domain:xn--b1aew.xn--p1ai"
           ],
           "outboundTag": "direct"
         },
-        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" }
+        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" },
+        { "ip": ["89.208.85.188"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid",
       "domainStrategy": "AsIs"
@@ -812,35 +221,28 @@
         "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
         "sniffing": { "enabled": true, "routeOnly": true, "destOverride": ["http","tls","quic"] }
+      },
+      {
+        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "settings": { "allowTransparent": false },
+        "sniffing": { "enabled": true, "routeOnly": true, "destOverride": ["http","tls","quic"] }
       }
     ],
     "outbounds": [
       {
         "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "152.232.57.100","port": 443,
-              "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","security": "reality",
+        "settings": { "vnext": [ { "address": "2.26.139.204","port": 443,
+          "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","security": "reality",
           "tcpSettings": { "header": { "type": "none" } },
-          "realitySettings": {
-            "serverName": "salam.ru","shortId": "5ad114a9",
-            "publicKey": "SqArIWpSt5VG9HVrtcZQn1r0Tc_eRvYzca2OFDBkF24",
-            "fingerprint": "qq","spiderX": "/"
-          }
-        }
+          "realitySettings": { "serverName": "cdn.tbank.ru","shortId": "a1d8f3b6c2e59407","publicKey": "HmnsKa6Mmm34gALomXBKB7d8UMIM33hhItp2z43VCkQ","fingerprint": "qq","spiderX": "/" } }
       },
       { "tag": "direct", "protocol": "freedom" },
       { "tag": "block", "protocol": "blackhole" }
     ]
   },
   {
-    "remarks": "🇫🇮 Хельсинки | ULTRA FAST",
+    "remarks": "🇫🇮 Хельсинки 🔥",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
@@ -873,30 +275,18 @@
     "outbounds": [
       {
         "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "2.26.128.88","port": 443,
-              "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","security": "reality",
+        "settings": { "vnext": [ { "address": "2.26.128.99","port": 443,
+          "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","security": "reality",
           "tcpSettings": { "header": { "type": "none" } },
-          "realitySettings": {
-            "serverName": "emaar.ru","shortId": "1b40e7c2a1d8f635",
-            "publicKey": "w88Ys8dVF9DuslGwUD05J9-FHNoAT9qmPysCvHiEmmg",
-            "fingerprint": "qq","spiderX": "/"
-          }
-        }
+          "realitySettings": { "serverName": "conf.emaar.ru","shortId": "6d2a8e5f1b9c3704","publicKey": "n6uqg76Ky-Vl-HUDF_iwZTaK3L_iQ_YoFP92U8PPYS0","fingerprint": "qq","spiderX": "/" } }
       },
       { "tag": "direct", "protocol": "freedom" },
       { "tag": "block", "protocol": "blackhole" }
     ]
   },
   {
-    "remarks": "🇮🇹 Италия | ULTRA FAST",
+    "remarks": "🇮🇹 Италия 🔥",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
@@ -929,220 +319,18 @@
     "outbounds": [
       {
         "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "2.26.130.158","port": 443,
-              "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","security": "reality",
+        "settings": { "vnext": [ { "address": "2.26.130.159","port": 443,
+          "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","security": "reality",
           "tcpSettings": { "header": { "type": "none" } },
-          "realitySettings": {
-            "serverName": "hatch.senko.ru","shortId": "2f6a8c3e90b2d574",
-            "publicKey": "GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU",
-            "fingerprint": "qq","spiderX": "/"
-          }
-        }
+          "realitySettings": { "serverName": "hatch.senko.ru","shortId": "2f6a8c3e90b2d574","publicKey": "GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU","fingerprint": "qq","spiderX": "/" } }
       },
       { "tag": "direct", "protocol": "freedom" },
       { "tag": "block", "protocol": "blackhole" }
     ]
   },
   {
-    "remarks": "🇩🇪 Германия",
-    "dns": {
-      "tag": "dns_inbound",
-      "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$",
-            "regexp:^.*\\.su$",
-            "regexp:^.*\\.рф$",
-            "geosite:category-ru"
-          ]
-        }
-      ],
-      "disableCache": false,
-      "queryStrategy": "UseIP",
-      "disableFallback": false
-    },
-    "routing": {
-      "rules": [
-        {
-          "type": "field",
-          "protocol": [
-            "bittorrent"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "port": "53",
-          "network": "udp",
-          "outboundTag": "dns-out"
-        },
-        {
-          "domain": [
-            "domain:one.one",
-            "domain:dns.google"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "ip": [
-            "1.1.1.1",
-            "1.0.0.1",
-            "8.8.8.8",
-            "8.8.4.4"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "domain": [
-            "domain:yandex.net"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "77.88.8.8",
-            "77.88.8.1"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "geosite:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "geoip:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "domain:habr.com",
-            "domain:jut.su",
-            "4pda"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "type": "field",
-          "domain": [
-            "regexp:^.*\\.ru$",
-            "regexp:^.*\\.su$",
-            "regexp:^.*\\.рф$",
-            "geosite:category-ru"
-          ],
-          "outboundTag": "direct"
-        }
-      ],
-      "domainMatcher": "hybrid",
-      "domainStrategy": "IPIfNonMatch"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "settings": {
-          "udp": true,
-          "auth": "noauth"
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "2.26.135.231",
-              "port": 443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "tcpSettings": {
-            "header": {
-              "type": "none"
-            }
-          },
-          "realitySettings": {
-            "serverName": "promo-digital.wb.ru",
-            "fingerprint": "qq",
-            "publicKey": "hO2ivrVA9pHjOiR3E_mpvBA8Vya5lrks-jfnla2bBHQ",
-            "shortId": "a1f9c0e21d7b6485",
-            "spiderX": "/"
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIPv4"
-        }
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      },
-      {
-        "tag": "dns-out",
-        "protocol": "dns"
-      }
-    ]
-  },
-  {
-    "remarks": "🇫🇷 Франция | ULTRA FAST",
+    "remarks": "🇩🇪 Германия 🔥",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
@@ -1175,23 +363,55 @@
     "outbounds": [
       {
         "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "2.26.129.2","port": 443,
-              "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","security": "reality",
+        "settings": { "vnext": [ { "address": "2.26.135.240","port": 443,
+          "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","security": "reality",
           "tcpSettings": { "header": { "type": "none" } },
-          "realitySettings": {
-            "serverName": "stream.indigo.ru","shortId": "5a8e1a04f3d92b67",
-            "publicKey": "gPTBA-gVUWAK9yziB_v_sGSncm0LwBQvEAsTQZK4jEE",
-            "fingerprint": "qq","spiderX": "/"
-          }
-        }
+          "realitySettings": { "serverName": "promo-digital.wb.ru","shortId": "4e9b7a1c5f3d2e68","publicKey": "lxTQST37knG1eCPA0UscdPHzTmSnMgito5r4o0vZils","fingerprint": "qq","spiderX": "/" } }
+      },
+      { "tag": "direct", "protocol": "freedom" },
+      { "tag": "block", "protocol": "blackhole" }
+    ]
+  },
+  {
+    "remarks": "🇫🇷 Франция 🔥",
+    "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
+    "routing": {
+      "rules": [
+        {
+          "type": "field",
+          "domain": [
+            "domain:ru","domain:su","domain:xn--p1ai","domain:moscow","domain:ya.cc",
+            "domain:yandex.com","domain:yandex.net","domain:yango.com","domain:vk.com",
+            "domain:vk.cc","domain:mvk.com","domain:mycdn.me","domain:my.com","domain:my.games",
+            "domain:ok.me","domain:kaspersky.com","domain:ozon.com","domain:ozon.by","domain:ozon.kz",
+            "domain:wildberries.by","domain:wildberries.kz","domain:2gis.com","domain:magnit.com",
+            "domain:fix-price.com","domain:x5.tech","domain:megafon.com","domain:moex.com",
+            "domain:okko.tv","domain:okko.sport","domain:boosty.to","domain:lenta.com",
+            "domain:meduza.io","domain:premier.one","domain:hh.by","domain:hh.kz",
+            "domain:mosmetro.tech","domain:avs.io"
+          ],
+          "outboundTag": "direct"
+        },
+        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" }
+      ],
+      "domainMatcher": "hybrid","domainStrategy": "AsIs"
+    },
+    "inbounds": [
+      {
+        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+        "settings": { "udp": true, "auth": "noauth" },
+        "sniffing": { "enabled": true, "routeOnly": true, "destOverride": ["http","tls","quic"] }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "2.26.129.78","port": 443,
+          "users": [{ "id": "bab61ae8-b04f-474a-9268-d6becc3ca487","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","security": "reality",
+          "tcpSettings": { "header": { "type": "none" } },
+          "realitySettings": { "serverName": "stream.selectus.ru","shortId": "b0f839d2a5c7e146","publicKey": "ub1PHBkdqrCahRc4rgavIBm9EvIDWrZi0ff_OvEv8FU","fingerprint": "qq","spiderX": "/" } }
       },
       { "tag": "direct", "protocol": "freedom" },
       { "tag": "block", "protocol": "blackhole" }
@@ -1202,15 +422,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1225,46 +439,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "ger.prutube.online","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "ger.prutube.online",
-            "publicKey": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic",
-            "shortId": "9c0edbf3dabbe437","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "ger.prutube.online","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "ger.prutube.online","publicKey": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic","shortId": "9c0edbf3dabbe437","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1275,15 +467,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1298,46 +484,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "de.anonch.net","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "de.anonch.net",
-            "publicKey": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic",
-            "shortId": "9c0edbf3dabbe437","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "de.anonch.net","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "de.anonch.net","publicKey": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic","shortId": "9c0edbf3dabbe437","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1348,15 +512,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1371,46 +529,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "de.anonch.org","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "de.anonch.org",
-            "publicKey": "S7EpPu01uO-3Qy23GdgQ9n-V907k2lQ9rf-68pDCrUY",
-            "shortId": "b4825c99e49f7d1e","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "de.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "de.anonch.org","publicKey": "S7EpPu01uO-3Qy23GdgQ9n-V907k2lQ9rf-68pDCrUY","shortId": "b4825c99e49f7d1e","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1421,15 +557,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1444,46 +574,26 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "hysteria",
+      { "tag": "proxy","protocol": "hysteria",
         "settings": { "address": "de.anonch.net","port": 443,"version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
+        "streamSettings": { "network": "hysteria",
           "hysteriaSettings": { "version": 2,"auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d" },
           "security": "tls",
-          "tlsSettings": {
-            "serverName": "de.anonch.net","enableSessionResumption": false,
-            "fingerprint": "chrome","alpn": ["h3"]
-          },
-          "finalmask": {
-            "quicParams": {
-              "maxIdleTimeout": 120,"keepAlivePeriod": 10,
-              "maxIncomingStreams": 1024,"disablePathMTUDiscovery": true
-            }
-          }
-        }
-      },
+          "tlsSettings": { "serverName": "de.anonch.net","enableSessionResumption": false,"fingerprint": "chrome","alpn": ["h3"] },
+          "finalmask": { "quicParams": { "maxIdleTimeout": 120,"keepAlivePeriod": 10,"maxIncomingStreams": 1024,"disablePathMTUDiscovery": true } } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1494,15 +604,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1517,46 +621,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "nl.anonch.org","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "nl.anonch.org",
-            "publicKey": "PTnvPPvjdA-ivYYjG-BcvYu8XYb0CEFKdr0goMKgK2s",
-            "shortId": "48a5dbcd976b54bf","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "nl.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "nl.anonch.org","publicKey": "PTnvPPvjdA-ivYYjG-BcvYu8XYb0CEFKdr0goMKgK2s","shortId": "48a5dbcd976b54bf","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1567,15 +649,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1590,46 +666,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "video.anonch.net","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "video.anonch.net",
-            "publicKey": "PTnvPPvjdA-ivYYjG-BcvYu8XYb0CEFKdr0goMKgK2s",
-            "shortId": "48a5dbcd976b54bf","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "video.anonch.net","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "video.anonch.net","publicKey": "PTnvPPvjdA-ivYYjG-BcvYu8XYb0CEFKdr0goMKgK2s","shortId": "48a5dbcd976b54bf","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1640,15 +694,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1663,46 +711,26 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "hysteria",
+      { "tag": "proxy","protocol": "hysteria",
         "settings": { "address": "video.anonch.net","port": 443,"version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
+        "streamSettings": { "network": "hysteria",
           "hysteriaSettings": { "version": 2,"auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d" },
           "security": "tls",
-          "tlsSettings": {
-            "serverName": "video.anonch.net","enableSessionResumption": false,
-            "fingerprint": "chrome","alpn": ["h3"]
-          },
-          "finalmask": {
-            "quicParams": {
-              "maxIdleTimeout": 120,"keepAlivePeriod": 10,
-              "maxIncomingStreams": 1024,"disablePathMTUDiscovery": true
-            }
-          }
-        }
-      },
+          "tlsSettings": { "serverName": "video.anonch.net","enableSessionResumption": false,"fingerprint": "chrome","alpn": ["h3"] },
+          "finalmask": { "quicParams": { "maxIdleTimeout": 120,"keepAlivePeriod": 10,"maxIncomingStreams": 1024,"disablePathMTUDiscovery": true } } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1713,15 +741,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1736,46 +758,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "ee.anonch.org","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "ee.anonch.org",
-            "publicKey": "F3XwMCP4KL9D1KAM1bRTrG5TfIbRDccuxCuB1NbfL2M",
-            "shortId": "7ee90aaaf3074f96","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "ee.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "ee.anonch.org","publicKey": "F3XwMCP4KL9D1KAM1bRTrG5TfIbRDccuxCuB1NbfL2M","shortId": "7ee90aaaf3074f96","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1786,15 +786,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1809,46 +803,26 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "hysteria",
+      { "tag": "proxy","protocol": "hysteria",
         "settings": { "address": "ee.anonch.org","port": 443,"version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
+        "streamSettings": { "network": "hysteria",
           "hysteriaSettings": { "version": 2,"auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d" },
           "security": "tls",
-          "tlsSettings": {
-            "serverName": "ee.anonch.org","enableSessionResumption": false,
-            "fingerprint": "chrome","alpn": ["h3"]
-          },
-          "finalmask": {
-            "quicParams": {
-              "maxIdleTimeout": 120,"keepAlivePeriod": 10,
-              "maxIncomingStreams": 1024,"disablePathMTUDiscovery": true
-            }
-          }
-        }
-      },
+          "tlsSettings": { "serverName": "ee.anonch.org","enableSessionResumption": false,"fingerprint": "chrome","alpn": ["h3"] },
+          "finalmask": { "quicParams": { "maxIdleTimeout": 120,"keepAlivePeriod": 10,"maxIncomingStreams": 1024,"disablePathMTUDiscovery": true } } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1859,15 +833,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1882,46 +850,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "pl.anonch.org","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "pl.anonch.org",
-            "publicKey": "-96WzU7fYt_qTW0a9hclh_PfPZAzR4JZVbG-9VxVHBU",
-            "shortId": "29f3e290420ffd41","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "pl.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "pl.anonch.org","publicKey": "-96WzU7fYt_qTW0a9hclh_PfPZAzR4JZVbG-9VxVHBU","shortId": "29f3e290420ffd41","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -1932,15 +878,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -1955,46 +895,26 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "hysteria",
+      { "tag": "proxy","protocol": "hysteria",
         "settings": { "address": "pl.anonch.org","port": 443,"version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
+        "streamSettings": { "network": "hysteria",
           "hysteriaSettings": { "version": 2,"auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d" },
           "security": "tls",
-          "tlsSettings": {
-            "serverName": "pl.anonch.org","enableSessionResumption": false,
-            "fingerprint": "chrome","alpn": ["h3"]
-          },
-          "finalmask": {
-            "quicParams": {
-              "maxIdleTimeout": 120,"keepAlivePeriod": 10,
-              "maxIncomingStreams": 1024,"disablePathMTUDiscovery": true
-            }
-          }
-        }
-      },
+          "tlsSettings": { "serverName": "pl.anonch.org","enableSessionResumption": false,"fingerprint": "chrome","alpn": ["h3"] },
+          "finalmask": { "quicParams": { "maxIdleTimeout": 120,"keepAlivePeriod": 10,"maxIncomingStreams": 1024,"disablePathMTUDiscovery": true } } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -2005,15 +925,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -2028,46 +942,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "us.anonch.org","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "us.anonch.org",
-            "publicKey": "r4y_jf8b86kYJwPWePMssaCpetQeNrV2seUTvNgxeg4",
-            "shortId": "f6ada2e832e19938","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "us.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "us.anonch.org","publicKey": "r4y_jf8b86kYJwPWePMssaCpetQeNrV2seUTvNgxeg4","shortId": "f6ada2e832e19938","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -2078,15 +970,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -2101,43 +987,26 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "hysteria",
+      { "tag": "proxy","protocol": "hysteria",
         "settings": { "address": "us.anonch.org","port": 443,"version": 2 },
-        "streamSettings": {
-          "network": "hysteria",
+        "streamSettings": { "network": "hysteria",
           "hysteriaSettings": { "version": 2,"auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d" },
           "security": "tls",
-          "tlsSettings": {
-            "serverName": "us.anonch.org","enableSessionResumption": false,
-            "fingerprint": "chrome","alpn": ["h3"]
-          },
-          "finalmask": {
-            "quicParams": { "congestion": "bbr" }
-          }
-        }
-      },
+          "tlsSettings": { "serverName": "us.anonch.org","enableSessionResumption": false,"fingerprint": "chrome","alpn": ["h3"] },
+          "finalmask": { "quicParams": { "congestion": "bbr" } } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -2148,15 +1017,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -2171,46 +1034,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "fl-sec.anonch.org","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "fl-sec.anonch.org",
-            "publicKey": "U4emEOkDFbLtjL-zw7iOti2IRrLjSBGcvRHK1edC-VI",
-            "shortId": "886b97976d1e42cc","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "fl-sec.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "fl-sec.anonch.org","publicKey": "U4emEOkDFbLtjL-zw7iOti2IRrLjSBGcvRHK1edC-VI","shortId": "886b97976d1e42cc","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -2221,15 +1062,9 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$",
-            "geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru","domain:anonch.org","domain:anonch.net","domain:prutube.online"] }
       ],
       "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
@@ -2244,46 +1079,24 @@
         { "domain": ["geosite:private"], "outboundTag": "direct" },
         { "ip": ["geoip:private"], "outboundTag": "direct" },
         { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
-        {
-          "type": "field",
-          "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
       "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
         "settings": { "udp": true, "auth": "noauth" },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      },
-      {
-        "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
         "settings": { "allowTransparent": false },
-        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] }
-      }
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy","protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "jp.anonch.net","port": 443,
-              "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp","tcpSettings": {},"security": "reality",
-          "realitySettings": {
-            "serverName": "jp.anonch.net",
-            "publicKey": "zxe-j-XWD2Hu7DZa-xtfaGiKMqKpqX5g21Reyiu99ic",
-            "shortId": "b2410b7bd2ad8f2a","fingerprint": "firefox"
-          }
-        }
-      },
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "jp.anonch.net","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","tcpSettings": {},"security": "reality",
+          "realitySettings": { "serverName": "jp.anonch.net","publicKey": "zxe-j-XWD2Hu7DZa-xtfaGiKMqKpqX5g21Reyiu99ic","shortId": "b2410b7bd2ad8f2a","fingerprint": "firefox" } } },
       { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
       { "tag": "block", "protocol": "blackhole" },
       { "tag": "dns-out", "protocol": "dns" }
@@ -2294,189 +1107,45 @@
     "dns": {
       "tag": "dns_inbound",
       "servers": [
-        "https://one.one.one.one/dns-query",
-        "https://dns.google/dns-query",
-        {
-          "address": "https://common.dot.dns.yandex.net/dns-query",
-          "domains": [
-            "regexp:^.*\\.ru$",
-            "regexp:^.*\\.su$",
-            "regexp:^.*\\.рф$",
-            "geosite:category-ru"
-          ]
-        }
+        "https://one.one.one.one/dns-query","https://dns.google/dns-query",
+        { "address": "https://common.dot.dns.yandex.net/dns-query",
+          "domains": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"] }
       ],
-      "disableCache": false,
-      "queryStrategy": "UseIP",
-      "disableFallback": false
+      "disableCache": false,"queryStrategy": "UseIP","disableFallback": false
     },
     "routing": {
       "rules": [
-        {
-          "type": "field",
-          "protocol": [
-            "bittorrent"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "port": "53",
-          "network": "udp",
-          "outboundTag": "dns-out"
-        },
-        {
-          "domain": [
-            "domain:one.one",
-            "domain:dns.google"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "ip": [
-            "1.1.1.1",
-            "1.0.0.1",
-            "8.8.8.8",
-            "8.8.4.4"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "domain": [
-            "domain:yandex.net"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "77.88.8.8",
-            "77.88.8.1"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "geosite:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "ip": [
-            "geoip:private"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "domain": [
-            "domain:habr.com",
-            "domain:jut.su",
-            "4pda"
-          ],
-          "outboundTag": "proxy"
-        },
-        {
-          "type": "field",
-          "domain": [
-            "regexp:^.*\\.ru$",
-            "regexp:^.*\\.su$",
-            "regexp:^.*\\.рф$",
-            "geosite:category-ru"
-          ],
-          "outboundTag": "direct"
-        }
+        { "type": "field", "protocol": ["bittorrent"], "outboundTag": "direct" },
+        { "port": "53", "network": "udp", "outboundTag": "dns-out" },
+        { "domain": ["domain:one.one","domain:dns.google"], "outboundTag": "proxy" },
+        { "ip": ["1.1.1.1","1.0.0.1","8.8.8.8","8.8.4.4"], "outboundTag": "proxy" },
+        { "domain": ["domain:yandex.net"], "outboundTag": "direct" },
+        { "ip": ["77.88.8.8","77.88.8.1"], "outboundTag": "direct" },
+        { "domain": ["geosite:private"], "outboundTag": "direct" },
+        { "ip": ["geoip:private"], "outboundTag": "direct" },
+        { "domain": ["domain:habr.com","domain:jut.su","4pda"], "outboundTag": "proxy" },
+        { "type": "field", "domain": ["regexp:^.*\\.ru$","regexp:^.*\\.su$","regexp:^.*\\.рф$","geosite:category-ru"], "outboundTag": "direct" }
       ],
-      "domainMatcher": "hybrid",
-      "domainStrategy": "IPIfNonMatch"
+      "domainMatcher": "hybrid","domainStrategy": "IPIfNonMatch"
     },
     "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "settings": {
-          "udp": true,
-          "auth": "noauth"
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        },
-        "sniffing": {
-          "enabled": true,
-          "routeOnly": false,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ]
-        }
-      }
+      { "tag": "socks","port": 10808,"listen": "127.0.0.1","protocol": "socks",
+        "settings": { "udp": true, "auth": "noauth" },
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } },
+      { "tag": "http","port": 10809,"listen": "127.0.0.1","protocol": "http",
+        "settings": { "allowTransparent": false },
+        "sniffing": { "enabled": true, "routeOnly": false, "destOverride": ["http","tls","quic"] } }
     ],
     "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "russia.anonch.org",
-              "port": 443,
-              "users": [
-                {
-                  "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "tcpSettings": {
-            "header": {
-              "type": "none"
-            }
-          },
-          "realitySettings": {
-            "serverName": "russia.anonch.org",
-            "fingerprint": "firefox",
-            "publicKey": "0T2odrhTIJG7wkM9fdqV_MybfgoTbjISdgD8hA7zO2E",
-            "shortId": "f74365ecc3f20122",
-            "spiderX": "/"
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIPv4"
-        }
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      },
-      {
-        "tag": "dns-out",
-        "protocol": "dns"
-      }
+      { "tag": "proxy","protocol": "vless",
+        "settings": { "vnext": [ { "address": "russia.anonch.org","port": 443,
+          "users": [{ "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d","encryption": "none","flow": "xtls-rprx-vision" }] } ] },
+        "streamSettings": { "network": "tcp","security": "reality",
+          "tcpSettings": { "header": { "type": "none" } },
+          "realitySettings": { "serverName": "russia.anonch.org","fingerprint": "firefox","publicKey": "0T2odrhTIJG7wkM9fdqV_MybfgoTbjISdgD8hA7zO2E","shortId": "f74365ecc3f20122","spiderX": "/" } } },
+      { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
+      { "tag": "block", "protocol": "blackhole" },
+      { "tag": "dns-out", "protocol": "dns" }
     ]
   }
 ]
