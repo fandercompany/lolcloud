@@ -184,7 +184,7 @@
     }
   },
   {
-    "remarks": "🇭🇺 Венгрия 🔥",
+    "remarks": "🇭🇺 Венгрия",
     "dns": {},
     "routing": {
       "rules": [
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "remarks": "🇫🇮 Хельсинки 🔥",
+    "remarks": "🇫🇮 Хельсинки",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
@@ -286,7 +286,7 @@
     ]
   },
   {
-    "remarks": "🇮🇹 Италия 🔥",
+    "remarks": "🇮🇹 Италия",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
@@ -330,7 +330,7 @@
     ]
   },
   {
-    "remarks": "🇩🇪 Германия 🔥",
+    "remarks": "🇩🇪 Германия",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
@@ -374,7 +374,7 @@
     ]
   },
   {
-    "remarks": "🇫🇷 Франция 🔥",
+    "remarks": "🇫🇷 Франция",
     "dns": { "servers": ["1.1.1.1","8.8.8.8","8.8.4.4"], "queryStrategy": "UseIPv4" },
     "routing": {
       "rules": [
