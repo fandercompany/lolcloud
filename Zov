@@ -575,7 +575,7 @@
         "xhttpSettings": {
           "path": "/api/v1/upload",
           "host": "185.141.227.180",
-          "mode": "auto",
+          "mode": "packet-up",
           "extra": {
             "xPaddingObfsMode": true,
             "xPaddingKey": "dc",
@@ -624,7 +624,7 @@
         "xhttpSettings": {
           "path": "/api/v1/upload",
           "host": "fitindoor.net",
-          "mode": "auto",
+          "mode": "packet-up",
           "extra": {
             "xPaddingObfsMode": true,
             "xPaddingKey": "dc",
