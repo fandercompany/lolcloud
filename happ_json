@@ -4375,6 +4375,99 @@
         }
       },
       {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "de.prutube.online",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "chrome",
+            "publicKey": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic",
+            "serverName": "de.prutube.online",
+            "shortId": "9c0edbf3dabbe437"
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "fp",
+        "remarks": "🇩🇪 Германия 1"
+      },
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "de.anonch.net",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "chrome",
+            "publicKey": "r-e8TQbBkEf-dE1ZSauRo8FlNCZBPJLmbaaq-uMk6ic",
+            "serverName": "de.anonch.net",
+            "shortId": "9c0edbf3dabbe437"
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇩🇪 Германия 1"
+      },
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "de.anonch.org",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "S7EpPu01uO-3Qy23GdgQ9n-V907k2lQ9rf-68pDCrUY",
+            "serverName": "de.anonch.org",
+            "shortId": "b4825c99e49f7d1e"
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇩🇪 Германия 1"
+      },
+      {
         "tag": "direct",
         "protocol": "freedom"
       },
@@ -4772,6 +4865,66 @@
             "spiderX": "/"
           }
         }
+      },
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "179.253.99.202",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "",
+                  "id": "1e1e60f4-a7f7-43d0-9121-417e8dbe8093"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "xhttp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "OVnQynNMNkl_49aomO7pYbOgPeMlNWNKPt0MhAq7Sx8",
+            "serverName": "www.interia.pl",
+            "shortId": "27f9c1d3f714d7f5"
+          },
+          "security": "reality",
+          "xhttpSettings": {
+            "host": "",
+            "mode": "auto",
+            "path": "/internal/tunnel"
+          }
+        },
+        "tag": "proxy",
+        "remarks": "🇵🇱 Польша 1"
+      },
+      {
+        "protocol": "hysteria",
+        "settings": {
+          "address": "eu34.cdn77.icu",
+          "fp": "firefox",
+          "port": 8444,
+          "version": 2
+        },
+        "streamSettings": {
+          "hysteriaSettings": {
+            "auth": "34be7c18-17f3-43a0-b297-27b2b118727a",
+            "version": 2
+          },
+          "network": "hysteria",
+          "security": "tls",
+          "tlsSettings": {
+            "alpn": [
+              "h3"
+            ],
+            "serverName": "eu34.cdn77.icu"
+          }
+        },
+        "tag": "proxy",
+        "remarks": "🇵🇱 Польша 1"
       },
       {
         "tag": "direct",
@@ -5306,6 +5459,68 @@
         }
       },
       {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "eu90.cdn77.icu",
+              "port": 20028,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "",
+                  "id": "34be7c18-17f3-43a0-b297-27b2b118727a"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8",
+            "serverName": "eu64.cdn77.icu",
+            "shortId": ""
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇫🇷 Франция 1"
+      },
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "62.217.181.109",
+              "port": 8443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "68a19895-7b8e-3720-8055-6aeab39515b2"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "_bXTdS7SEP3arribAnbsdiC3VXRhKRVCsYI533sjsCM",
+            "serverName": "ya.ru",
+            "shortId": "542a83882d6461d5"
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇫🇷 Франция 1"
+      },
+      {
         "tag": "direct",
         "protocol": "freedom"
       },
@@ -5449,7 +5664,236 @@
     ]
   },
   {
-    "remarks": "🇯🇵 Азия",
+    "remarks": "🇧🇾 Беларусь",
+    "dns": {
+      "servers": [
+        "1.1.1.1",
+        "8.8.8.8"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "routing": {
+      "balancers": [
+        {
+          "tag": "Balancer",
+          "selector": [
+            "proxy-"
+          ],
+          "strategy": {
+            "type": "leastPing"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "inboundTag": [
+            "socks",
+            "http"
+          ],
+          "balancerTag": "Balancer"
+        }
+      ]
+    },
+    "burstObservatory": {
+      "subjectSelector": [
+        "proxy-"
+      ],
+      "pingConfig": {
+        "destination": "https://www.gstatic.com/generate_204",
+        "interval": "1m",
+        "sampling": 3,
+        "timeout": "5s"
+      }
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "settings": {
+          "udp": true,
+          "auth": "noauth"
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "129.101.107.31",
+              "port": 8443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "68a19895-7b8e-12c0-8055-6aeab39515b2"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "_bXTdS7SEP3arribAnbsdiC3VXRhKRVCsYI533sjsCM",
+            "serverName": "ya.ru",
+            "shortId": "542a83882d6461d5"
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇧🇾 Беларусь 1"
+      },
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "62.217.181.109",
+              "port": 8443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "68a19895-7b8e-12c0-8055-6aeab39515b2"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "_bXTdS7SEP3arribAnbsdiC3VXRhKRVCsYI533sjsCM",
+            "serverName": "ya.ru",
+            "shortId": "542a83882d6461d5"
+          },
+          "security": "reality",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇧🇾 Беларусь 1"
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ]
+  },
+  {
+    "remarks": "🇬🇪 Грузия",
+    "dns": {
+      "servers": [
+        "1.1.1.1",
+        "8.8.8.8"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "routing": {
+      "balancers": [
+        {
+          "tag": "Balancer",
+          "selector": [
+            "proxy-"
+          ],
+          "strategy": {
+            "type": "leastPing"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "inboundTag": [
+            "socks",
+            "http"
+          ],
+          "balancerTag": "Balancer"
+        }
+      ]
+    },
+    "burstObservatory": {
+      "subjectSelector": [
+        "proxy-"
+      ],
+      "pingConfig": {
+        "destination": "https://www.gstatic.com/generate_204",
+        "interval": "1m",
+        "sampling": 3,
+        "timeout": "5s"
+      }
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "settings": {
+          "udp": true,
+          "auth": "noauth"
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "94.228.115.29",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision",
+                  "id": "128ce9ab-63bc-48dc-92ca-1b5426a9eb46"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "publicKey": "MuiM905RABnOThOyKvcst-r_4Oxj1Ah8vVyzwpmS_18",
+            "serverName": "ai.nikotine.us",
+            "shortId": "327ca899c3b5c31b",
+            "spiderX": "/"
+          },
+          "security": "reality",
+          "spx": "/",
+          "tcpSettings": {}
+        },
+        "tag": "proxy",
+        "remarks": "🇬🇪 Грузия 1"
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ]
+  },
+  {
+    "remarks": "🇯🇵 Япония",
     "dns": {
       "servers": [
         "1.1.1.1",
@@ -6100,6 +6544,209 @@
             "spiderX": "/"
           }
         }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ]
+  },
+  {
+    "remarks": "🇪🇺 Автовыбор Игровой",
+    "dns": {
+      "servers": [
+        "1.1.1.1",
+        "8.8.8.8"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "routing": {
+      "balancers": [
+        {
+          "tag": "Balancer",
+          "selector": [
+            "proxy-"
+          ],
+          "strategy": {
+            "type": "leastPing"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "inboundTag": [
+            "socks",
+            "http"
+          ],
+          "balancerTag": "Balancer"
+        }
+      ]
+    },
+    "burstObservatory": {
+      "subjectSelector": [
+        "proxy-"
+      ],
+      "pingConfig": {
+        "destination": "https://www.gstatic.com/generate_204",
+        "interval": "1m",
+        "sampling": 3,
+        "timeout": "5s"
+      }
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10848,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "settings": {
+          "udp": true,
+          "auth": "noauth"
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "hysteria",
+        "settings": {
+          "address": "de.anonch.net",
+          "port": 443,
+          "version": 2
+        },
+        "streamSettings": {
+          "finalmask": {
+            "quicParams": {
+              "disablePathMTUDiscovery": true,
+              "keepAlivePeriod": 10,
+              "maxIdleTimeout": 120,
+              "maxIncomingStreams": 1024
+            }
+          },
+          "hysteriaSettings": {
+            "auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+            "version": 2
+          },
+          "network": "hysteria",
+          "security": "tls",
+          "tlsSettings": {
+            "alpn": [
+              "h3"
+            ],
+            "enableSessionResumption": false,
+            "fingerprint": "chrome",
+            "serverName": "de.anonch.net"
+          }
+        },
+        "tag": "proxy",
+        "remarks": "🇪🇺 Автовыбор Игровой 1"
+      },
+      {
+        "protocol": "hysteria",
+        "settings": {
+          "address": "nl.anonch.net",
+          "port": 443,
+          "version": 2
+        },
+        "streamSettings": {
+          "finalmask": {
+            "quicParams": {
+              "disablePathMTUDiscovery": true,
+              "keepAlivePeriod": 10,
+              "maxIdleTimeout": 120,
+              "maxIncomingStreams": 1024
+            }
+          },
+          "hysteriaSettings": {
+            "auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+            "version": 2
+          },
+          "network": "hysteria",
+          "security": "tls",
+          "tlsSettings": {
+            "alpn": [
+              "h3"
+            ],
+            "enableSessionResumption": false,
+            "fingerprint": "chrome",
+            "serverName": "nl.anonch.net"
+          }
+        },
+        "tag": "proxy",
+        "remarks": "🇪🇺 Автовыбор Игровой 1"
+      },
+      {
+        "protocol": "hysteria",
+        "settings": {
+          "address": "ee.anonch.org",
+          "port": 443,
+          "version": 2
+        },
+        "streamSettings": {
+          "finalmask": {
+            "quicParams": {
+              "disablePathMTUDiscovery": true,
+              "keepAlivePeriod": 10,
+              "maxIdleTimeout": 120,
+              "maxIncomingStreams": 1024
+            }
+          },
+          "hysteriaSettings": {
+            "auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+            "version": 2
+          },
+          "network": "hysteria",
+          "security": "tls",
+          "tlsSettings": {
+            "alpn": [
+              "h3"
+            ],
+            "enableSessionResumption": false,
+            "fingerprint": "chrome",
+            "serverName": "ee.anonch.org"
+          }
+        },
+        "tag": "proxy",
+        "remarks": "🇪🇺 Автовыбор Игровой 1"
+      },
+      {
+        "protocol": "hysteria",
+        "settings": {
+          "address": "pl.anonch.org",
+          "port": 443,
+          "version": 2
+        },
+        "streamSettings": {
+          "finalmask": {
+            "quicParams": {
+              "disablePathMTUDiscovery": true,
+              "keepAlivePeriod": 10,
+              "maxIdleTimeout": 120,
+              "maxIncomingStreams": 1024
+            }
+          },
+          "hysteriaSettings": {
+            "auth": "b384d216-9efa-4fd0-a5ef-bd3c37475e4d",
+            "version": 2
+          },
+          "network": "hysteria",
+          "security": "tls",
+          "tlsSettings": {
+            "alpn": [
+              "h3"
+            ],
+            "enableSessionResumption": false,
+            "fingerprint": "chrome",
+            "serverName": "pl.anonch.org"
+          }
+        },
+        "tag": "proxy",
+        "remarks": "🇪🇺 Автовыбор Игровой 1"
       },
       {
         "tag": "direct",
@@ -7509,76 +8156,6 @@
     "dns": {
       "servers": [
         "1.1.1.1",
-        "8.8.8.8",
-        "8.8.4.4"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "routing": {
-      "rules": [
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "inboundTag": [
-            "socks",
-            "http"
-          ],
-          "outboundTag": "proxy"
-        }
-      ]
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "settings": {
-          "udp": true,
-          "auth": "noauth"
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "hysteria",
-        "settings": {
-          "address": "sg-chips-1.fantoff.online",
-          "port": 443,
-          "version": 2
-        },
-        "streamSettings": {
-          "network": "hysteria",
-          "security": "tls",
-          "tlsSettings": {
-            "serverName": "sg-chips-1.fantoff.online",
-            "alpn": [
-              "h3"
-            ],
-            "fingerprint": "chrome"
-          },
-          "hysteriaSettings": {
-            "auth": "e7e72d10-82b5-414b-9757-75a2effa4693",
-            "version": 2
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ]
-  },
-  {
-    "remarks": "🇬🇪 Грузия",
-    "dns": {
-      "servers": [
-        "1.1.1.1",
         "8.8.8.8"
       ],
       "queryStrategy": "UseIPv4"
@@ -7621,7 +8198,7 @@
     "inbounds": [
       {
         "tag": "socks",
-        "port": 10808,
+        "port": 10848,
         "listen": "127.0.0.1",
         "protocol": "socks",
         "settings": {
@@ -7632,37 +8209,29 @@
     ],
     "outbounds": [
       {
-        "protocol": "vless",
+        "protocol": "hysteria",
         "settings": {
-          "vnext": [
-            {
-              "address": "94.228.115.29",
-              "port": 443,
-              "users": [
-                {
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision",
-                  "id": "128ce9ab-63bc-48dc-92ca-1b5426a9eb46"
-                }
-              ]
-            }
-          ]
+          "address": "sg-chips-1.fantoff.online",
+          "port": 443,
+          "version": 2
         },
         "streamSettings": {
-          "network": "tcp",
-          "realitySettings": {
-            "fingerprint": "firefox",
-            "publicKey": "MuiM905RABnOThOyKvcst-r_4Oxj1Ah8vVyzwpmS_18",
-            "serverName": "ai.nikotine.us",
-            "shortId": "327ca899c3b5c31b",
-            "spiderX": "/"
+          "hysteriaSettings": {
+            "auth": "e7e72d10-82b5-414b-9757-75a2effa4693",
+            "version": 2
           },
-          "security": "reality",
-          "spx": "/",
-          "tcpSettings": {}
+          "network": "hysteria",
+          "security": "tls",
+          "tlsSettings": {
+            "alpn": [
+              "h3"
+            ],
+            "fingerprint": "chrome",
+            "serverName": "sg-chips-1.fantoff.online"
+          }
         },
         "tag": "proxy",
-        "remarks": "🇬🇪 Грузия 1"
+        "remarks": "🇸🇬 HYSTERIA-21 | 🎮 1"
       },
       {
         "tag": "direct",
