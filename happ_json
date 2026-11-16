@@ -4340,7 +4340,7 @@
     ],
     "outbounds": [
       {
-        "tag": "proxy",
+        "tag": "proxy-2",
         "protocol": "vless",
         "settings": {
           "vnext": [
@@ -4464,7 +4464,7 @@
           "security": "reality",
           "tcpSettings": {}
         },
-        "tag": "proxy",
+        "tag": "proxy-1",
         "remarks": "🇩🇪 Германия 1"
       },
       {
@@ -4898,7 +4898,7 @@
             "path": "/internal/tunnel"
           }
         },
-        "tag": "proxy",
+        "tag": "proxy-2",
         "remarks": "🇵🇱 Польша 1"
       },
       {
@@ -4923,7 +4923,7 @@
             "serverName": "eu34.cdn77.icu"
           }
         },
-        "tag": "proxy",
+        "tag": "proxy-3",
         "remarks": "🇵🇱 Польша 1"
       },
       {
@@ -5424,7 +5424,7 @@
     ],
     "outbounds": [
       {
-        "tag": "proxy",
+        "tag": "proxy-4",
         "protocol": "vless",
         "settings": {
           "vnext": [
@@ -5486,7 +5486,7 @@
           "security": "reality",
           "tcpSettings": {}
         },
-        "tag": "proxy",
+        "tag": "proxy-3",
         "remarks": "🇫🇷 Франция 1"
       },
       {
@@ -5517,7 +5517,7 @@
           "security": "reality",
           "tcpSettings": {}
         },
-        "tag": "proxy",
+        "tag": "proxy-5",
         "remarks": "🇫🇷 Франция 1"
       },
       {
@@ -5748,7 +5748,7 @@
           "security": "reality",
           "tcpSettings": {}
         },
-        "tag": "proxy",
+        "tag": "proxy-1",
         "remarks": "🇧🇾 Беларусь 1"
       },
       {
@@ -5779,7 +5779,7 @@
           "security": "reality",
           "tcpSettings": {}
         },
-        "tag": "proxy",
+        "tag": "proxy-2",
         "remarks": "🇧🇾 Беларусь 1"
       },
       {
@@ -6677,7 +6677,7 @@
             "serverName": "nl.anonch.net"
           }
         },
-        "tag": "proxy",
+        "tag": "proxy-2",
         "remarks": "🇪🇺 Автовыбор Игровой 1"
       },
       {
@@ -6711,7 +6711,7 @@
             "serverName": "ee.anonch.org"
           }
         },
-        "tag": "proxy",
+        "tag": "proxy-3",
         "remarks": "🇪🇺 Автовыбор Игровой 1"
       },
       {
@@ -6745,7 +6745,7 @@
             "serverName": "pl.anonch.org"
           }
         },
-        "tag": "proxy",
+        "tag": "proxy-4",
         "remarks": "🇪🇺 Автовыбор Игровой 1"
       },
       {
