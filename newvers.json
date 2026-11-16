@@ -112,7 +112,7 @@
           "xPaddingBytes": "100-1000"
         }
       },
-      "remarks": "Автовыбор (auto-ddG-1)"
+      "remarks": "🇪🇺 Автовыбор"
     },
     {
       "tag": "auto-p1-1",
@@ -142,7 +142,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Автовыбор-p1"
+      "remarks": "🇪🇺 Автовыбор"
     },
     {
       "tag": "auto-p1-2",
@@ -172,7 +172,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Автовыбор-p1"
+      "remarks": "🇪🇺 Автовыбор"
     },
     {
       "tag": "auto-p1-3",
@@ -202,7 +202,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Автовыбор-p1"
+      "remarks": "🇪🇺 Автовыбор"
     },
     {
       "tag": "auto-t3",
@@ -232,7 +232,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Автовыбор-t3"
+      "remarks": "🇪🇺 Автовыбор"
     },
     {
       "tag": "wl-1",
@@ -280,7 +280,7 @@
           }
         }
       },
-      "remarks": "Белые списки-1"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-2",
@@ -328,7 +328,7 @@
           }
         }
       },
-      "remarks": "Белые списки-2"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-3",
@@ -366,7 +366,7 @@
           }
         }
       },
-      "remarks": "Белые списки-3"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-4",
@@ -422,7 +422,7 @@
           }
         }
       },
-      "remarks": "Белые списки-4"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-5",
@@ -478,7 +478,7 @@
           }
         }
       },
-      "remarks": "Белые списки-5"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-6",
@@ -534,7 +534,7 @@
           }
         }
       },
-      "remarks": "Белые списки-6"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-7",
@@ -571,7 +571,7 @@
           "path": "/xh"
         }
       },
-      "remarks": "Белые списки-7"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-8",
@@ -601,7 +601,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Белые списки-8"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-9",
@@ -651,7 +651,7 @@
           }
         }
       },
-      "remarks": "Белые списки-9"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "wl-10",
@@ -701,7 +701,7 @@
           }
         }
       },
-      "remarks": "Белые списки-10"
+      "remarks": "🇸🇴 Белые списки"
     },
     {
       "tag": "ai-1",
@@ -731,7 +731,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-1"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-2",
@@ -761,7 +761,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-2"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-3",
@@ -791,7 +791,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-3"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-4",
@@ -821,7 +821,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-4"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-5",
@@ -851,7 +851,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-5"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-6",
@@ -891,7 +891,7 @@
           }
         }
       },
-      "remarks": "Нейросети-6"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-7",
@@ -920,7 +920,7 @@
           "multiMode": false
         }
       },
-      "remarks": "Нейросети-7"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-8",
@@ -945,7 +945,7 @@
           "fingerprint": "chrome"
         }
       },
-      "remarks": "Нейросети-8"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-9",
@@ -975,7 +975,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-9"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-10",
@@ -1005,7 +1005,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-10"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-11",
@@ -1035,7 +1035,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-11"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-12",
@@ -1065,7 +1065,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-12"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-13",
@@ -1095,7 +1095,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-13"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-14",
@@ -1135,7 +1135,7 @@
           }
         }
       },
-      "remarks": "Нейросети-14"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-15",
@@ -1177,7 +1177,7 @@
           ]
         }
       },
-      "remarks": "Нейросети-15"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-16",
@@ -1207,7 +1207,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-16"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-17",
@@ -1241,7 +1241,7 @@
           "multiMode": false
         }
       },
-      "remarks": "Нейросети-17"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-18",
@@ -1271,7 +1271,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-18"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-19",
@@ -1296,7 +1296,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-19"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-20",
@@ -1321,7 +1321,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-20"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-21",
@@ -1352,7 +1352,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-21"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-22",
@@ -1392,7 +1392,7 @@
           }
         }
       },
-      "remarks": "Нейросети-22"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-23",
@@ -1422,7 +1422,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-23"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-24",
@@ -1462,7 +1462,7 @@
           }
         }
       },
-      "remarks": "Нейросети-24"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-25",
@@ -1490,7 +1490,7 @@
           "multiMode": false
         }
       },
-      "remarks": "Нейросети-25"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-26",
@@ -1518,7 +1518,7 @@
           "multiMode": false
         }
       },
-      "remarks": "Нейросети-26"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-27",
@@ -1548,7 +1548,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-27"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-28",
@@ -1578,7 +1578,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-28"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-29",
@@ -1609,7 +1609,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-29"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-30",
@@ -1658,7 +1658,7 @@
           }
         }
       },
-      "remarks": "Нейросети-30"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-31",
@@ -1688,7 +1688,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-31"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-32",
@@ -1718,7 +1718,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-32"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-33",
@@ -1769,7 +1769,7 @@
           }
         }
       },
-      "remarks": "Нейросети-33"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-34",
@@ -1815,7 +1815,7 @@
           ]
         }
       },
-      "remarks": "Нейросети-34"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-35",
@@ -1846,7 +1846,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Нейросети-35"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-36",
@@ -1876,7 +1876,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Нейросети-36"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-37",
@@ -1918,7 +1918,7 @@
           ]
         }
       },
-      "remarks": "Нейросети-37"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-38",
@@ -1949,7 +1949,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-38"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-39",
@@ -1980,7 +1980,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-39"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-40",
@@ -2012,7 +2012,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-40"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-41",
@@ -2043,7 +2043,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-41"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-42",
@@ -2074,7 +2074,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-42"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-43",
@@ -2105,7 +2105,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-43"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-44",
@@ -2161,7 +2161,7 @@
           }
         }
       },
-      "remarks": "Нейросети-44"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-45",
@@ -2217,7 +2217,7 @@
           }
         }
       },
-      "remarks": "Нейросети-45"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-46",
@@ -2273,7 +2273,7 @@
           }
         }
       },
-      "remarks": "Нейросети-46"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-47",
@@ -2303,7 +2303,7 @@
           "fingerprint": "edge"
         }
       },
-      "remarks": "Нейросети-47"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-48",
@@ -2333,7 +2333,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-48"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-49",
@@ -2363,7 +2363,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-49"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-50",
@@ -2397,7 +2397,7 @@
           "multiMode": false
         }
       },
-      "remarks": "Нейросети-50"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-51",
@@ -2427,7 +2427,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-51"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-52",
@@ -2457,7 +2457,7 @@
           "fingerprint": "qq"
         }
       },
-      "remarks": "Нейросети-52"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-53",
@@ -2494,7 +2494,7 @@
           "path": "/xh"
         }
       },
-      "remarks": "Нейросети-53"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-54",
@@ -2525,7 +2525,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-54"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-55",
@@ -2555,7 +2555,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-55"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-56",
@@ -2621,7 +2621,7 @@
           ]
         }
       },
-      "remarks": "Нейросети-56"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-57",
@@ -2671,7 +2671,7 @@
           }
         }
       },
-      "remarks": "Нейросети-57"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "ai-58",
@@ -2701,7 +2701,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нейросети-58"
+      "remarks": "🇸🇴 Нейросети"
     },
     {
       "tag": "direct",
@@ -2746,7 +2746,7 @@
           "fingerprint": "chrome"
         }
       },
-      "remarks": "Германия-1"
+      "remarks": "🇩🇪 Германия"
     },
     {
       "tag": "nl-1",
@@ -2776,7 +2776,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "Нидерланды-1"
+      "remarks": "🇳🇱 Нидерланды"
     },
     {
       "tag": "ee-1",
@@ -2986,7 +2986,7 @@
           "fingerprint": "firefox"
         }
       },
-      "remarks": "США-1"
+      "remarks": "🇺🇸 США"
     },
     {
       "tag": "fi-1",
@@ -3255,7 +3255,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-1 | 🎮"
+      "remarks": "🇩🇪 HYSTERIA-1 | 🎮"
     },
     {
       "tag": "hy-2",
@@ -3280,7 +3280,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-2 | 🎮"
+      "remarks": "🇩🇪 HYSTERIA-2 | 🎮"
     },
     {
       "tag": "hy-3",
@@ -3305,7 +3305,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-3 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-3 | 🎮"
     },
     {
       "tag": "hy-4",
@@ -3330,7 +3330,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-4 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-4 | 🎮"
     },
     {
       "tag": "hy-5",
@@ -3355,7 +3355,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-5 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-5 | 🎮"
     },
     {
       "tag": "hy-6",
@@ -3379,7 +3379,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-6 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-6 | 🎮"
     },
     {
       "tag": "hy-7",
@@ -3403,7 +3403,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-7 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-7 | 🎮"
     },
     {
       "tag": "hy-8",
@@ -3428,7 +3428,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-8 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-8 | 🎮"
     },
     {
       "tag": "hy-9",
@@ -3452,7 +3452,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-9 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-9 | 🎮"
     },
     {
       "tag": "hy-10",
@@ -3476,7 +3476,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-10 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-10 | 🎮"
     },
     {
       "tag": "hy-11",
@@ -3501,7 +3501,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-11 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-11 | 🎮"
     },
     {
       "tag": "hy-12",
@@ -3526,7 +3526,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-12 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-12 | 🎮"
     },
     {
       "tag": "hy-13",
@@ -3550,7 +3550,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-13 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-13 | 🎮"
     },
     {
       "tag": "hy-14",
@@ -3574,7 +3574,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-14 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-14 | 🎮"
     },
     {
       "tag": "hy-15",
@@ -3599,7 +3599,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-15 | 🎮"
+      "remarks": "🇵🇱 HYSTERIA-15 | 🎮"
     },
     {
       "tag": "hy-16",
@@ -3624,7 +3624,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-16 | 🎮"
+      "remarks": "🇵🇱 HYSTERIA-16 | 🎮"
     },
     {
       "tag": "hy-17",
@@ -3648,7 +3648,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-17 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-17 | 🎮"
     },
     {
       "tag": "hy-18",
@@ -3673,7 +3673,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-18 | 🎮"
+      "remarks": "🇳🇱 HYSTERIA-18 | 🎮"
     },
     {
       "tag": "hy-19",
@@ -3698,7 +3698,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-19 | 🎮"
+      "remarks": "🇳🇱 HYSTERIA-19 | 🎮"
     },
     {
       "tag": "hy-20",
@@ -3723,7 +3723,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-20 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-20 | 🎮"
     },
     {
       "tag": "hy-21",
@@ -3748,7 +3748,7 @@
           "version": 2
         }
       },
-      "remarks": "HYSTERIA-21 | 🎮"
+      "remarks": "🇪🇺 HYSTERIA-21 | 🎮"
     },
     {
       "tag": "direct",
@@ -3766,67 +3766,130 @@
       "protocol": "dns"
     }
   ],
-  "burstObservatory": {
-    "subjectSelector": [
-      "auto-",
-      "wl-",
-      "ai-",
-      "de-",
-      "nl-",
-      "ee-",
-      "lt-",
-      "hu-",
-      "it-",
-      "lv-",
-      "pl-",
-      "us-",
-      "fi-",
-      "se-",
-      "fr-",
-      "ru-",
-      "asia-",
-      "sg-",
-      "il-",
-      "cis-",
-      "hy-"
-    ],
-    "pingConfig": {
-      "destination": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "sampling": 3,
-      "timeout": "5s"
-    }
-  },
   "routing": {
     "domainMatcher": "hybrid",
     "domainStrategy": "IPIfNonMatch",
     "balancers": [
       {
-        "tag": "syktobal",
+        "tag": "bal-auto",
         "selector": [
-          "auto-",
-          "wl-",
-          "ai-",
-          "de-",
-          "nl-",
-          "ee-",
-          "lt-",
-          "hu-",
-          "it-",
-          "lv-",
-          "pl-",
-          "us-",
-          "fi-",
-          "se-",
-          "fr-",
-          "ru-",
-          "asia-",
-          "sg-",
-          "il-",
-          "cis-",
-          "hy-"
+          "auto-ddG-1",
+          "auto-p1-1",
+          "auto-p1-2",
+          "auto-p1-3",
+          "auto-t3"
         ],
-        "fallbackTag": "",
+        "strategy": {
+          "type": "leastPing"
+        }
+      },
+      {
+        "tag": "bal-wl",
+        "selector": [
+          "wl-1",
+          "wl-2",
+          "wl-3",
+          "wl-4",
+          "wl-5",
+          "wl-6",
+          "wl-7",
+          "wl-8",
+          "wl-9",
+          "wl-10"
+        ],
+        "strategy": {
+          "type": "leastPing"
+        }
+      },
+      {
+        "tag": "bal-ai",
+        "selector": [
+          "ai-1",
+          "ai-2",
+          "ai-3",
+          "ai-4",
+          "ai-5",
+          "ai-6",
+          "ai-7",
+          "ai-8",
+          "ai-9",
+          "ai-10",
+          "ai-11",
+          "ai-12",
+          "ai-13",
+          "ai-14",
+          "ai-15",
+          "ai-16",
+          "ai-17",
+          "ai-18",
+          "ai-19",
+          "ai-20",
+          "ai-21",
+          "ai-22",
+          "ai-23",
+          "ai-24",
+          "ai-25",
+          "ai-26",
+          "ai-27",
+          "ai-28",
+          "ai-29",
+          "ai-30",
+          "ai-31",
+          "ai-32",
+          "ai-33",
+          "ai-34",
+          "ai-35",
+          "ai-36",
+          "ai-37",
+          "ai-38",
+          "ai-39",
+          "ai-40",
+          "ai-41",
+          "ai-42",
+          "ai-43",
+          "ai-44",
+          "ai-45",
+          "ai-46",
+          "ai-47",
+          "ai-48",
+          "ai-49",
+          "ai-50",
+          "ai-51",
+          "ai-52",
+          "ai-53",
+          "ai-54",
+          "ai-55",
+          "ai-56",
+          "ai-57",
+          "ai-58"
+        ],
+        "strategy": {
+          "type": "leastPing"
+        }
+      },
+      {
+        "tag": "bal-de",
+        "selector": [
+          "de-1"
+        ],
+        "strategy": {
+          "type": "leastPing"
+        }
+      },
+      {
+        "tag": "bal-nl",
+        "selector": [
+          "nl-1"
+        ],
+        "strategy": {
+          "type": "leastPing"
+        }
+      },
+      {
+        "tag": "bal-us",
+        "selector": [
+          "us-1"
+        ],
         "strategy": {
           "type": "leastPing"
         }
@@ -3873,7 +3936,7 @@
       {
         "type": "field",
         "network": "tcp,udp",
-        "balancerTag": "syktobal"
+        "balancerTag": "bal-auto"
       }
     ]
   }
