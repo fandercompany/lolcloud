@@ -54,6 +54,17 @@
         }
       ]
     },
+    "burstObservatory": {
+      "subjectSelector": [
+        "auto-"
+      ],
+      "pingConfig": {
+        "destination": "https://www.gstatic.com/generate_204",
+        "interval": "1m",
+        "sampling": 3,
+        "timeout": "5s"
+      }
+    },
     "inbounds": [
       {
         "tag": "socks",
@@ -312,6 +323,17 @@
           "balancerTag": "Balancer"
         }
       ]
+    },
+    "burstObservatory": {
+      "subjectSelector": [
+        "wl-"
+      ],
+      "pingConfig": {
+        "destination": "https://www.gstatic.com/generate_204",
+        "interval": "1m",
+        "sampling": 3,
+        "timeout": "5s"
+      }
     },
     "inbounds": [
       {
@@ -876,6 +898,17 @@
           "balancerTag": "Balancer"
         }
       ]
+    },
+    "burstObservatory": {
+      "subjectSelector": [
+        "ai-"
+      ],
+      "pingConfig": {
+        "destination": "https://www.gstatic.com/generate_204",
+        "interval": "1m",
+        "sampling": 3,
+        "timeout": "5s"
+      }
     },
     "inbounds": [
       {
@@ -2740,12 +2773,6 @@
             "mode": "stream-up",
             "path": "/api/articles/live",
             "extra": {
-              "headers": {
-                "Accept": "application/vnd.api+json, application/json, text/plain, */*",
-                "Accept-Language": "ru-RU,ru;q=0.9",
-                "Cache-Control": "no-cache",
-                "Pragma": "no-cache"
-              },
               "mode": "stream-up",
               "serverMaxHeaderBytes": 32768,
               "xPaddingBytes": "48-256",
