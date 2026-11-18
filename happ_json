@@ -106,160 +106,6 @@
     ],
     "outbounds": [
       {
-        "tag": "auto-ddG-1",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "91.215.43.168",
-              "port": 443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": ""
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "xhttp",
-          "security": "tls",
-          "tlsSettings": {
-            "serverName": "pic.rtbcdn.ru",
-            "alpn": [
-              "h2",
-              "http/1.1"
-            ],
-            "fingerprint": "edge"
-          },
-          "xhttpSettings": {
-            "host": "pic.rtbcdn.ru",
-            "mode": "packet-up",
-            "path": "/xhttp",
-            "scMaxEachPostBytes": "500000-1000000",
-            "xPaddingBytes": "100-1000"
-          }
-        }
-      },
-      {
-        "tag": "auto-p1-1",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "194.87.242.27",
-              "port": 443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "stream.selectus.ru",
-            "publicKey": "ub1PHBkdqrCahRc4rgavIBm9EvIDWrZi0ff_OvEv8FU",
-            "shortId": "b0f839d2a5c7e146",
-            "fingerprint": "qq"
-          }
-        }
-      },
-      {
-        "tag": "auto-p1-2",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "193.124.94.136",
-              "port": 443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "promo-digital.wb.ru",
-            "publicKey": "lxTQST37knG1eCPA0UscdPHzTmSnMgito5r4o0vZils",
-            "shortId": "4e9b7a1c5f3d2e68",
-            "fingerprint": "qq"
-          }
-        }
-      },
-      {
-        "tag": "auto-p1-3",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "185.70.223.54",
-              "port": 443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "conf.emaar.ru",
-            "publicKey": "n6uqg76Ky-Vl-HUDF_iwZTaK3L_iQ_YoFP92U8PPYS0",
-            "shortId": "6d2a8e5f1b9c3704",
-            "fingerprint": "qq"
-          }
-        }
-      },
-      {
-        "tag": "auto-t3",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "178.248.232.105",
-              "port": 56443,
-              "users": [
-                {
-                  "id": "bab61ae8-b04f-474a-9268-d6becc3ca487",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "serverName": "rutube.ru",
-            "publicKey": "UoWXZIbLDIDA1opu4ekUYLNWgci5gLgghMJ07ApYTGo",
-            "shortId": "228c1a2e913d1f05",
-            "fingerprint": "qq"
-          }
-        }
-      },
-      {
         "protocol": "vless",
         "settings": {
           "vnext": [
@@ -17318,31 +17164,6 @@
       {
         "protocol": "hysteria",
         "settings": {
-          "address": "kz-kazilik-1.fantoff.online",
-          "fp": "chrome",
-          "port": 443,
-          "version": 2
-        },
-        "streamSettings": {
-          "hysteriaSettings": {
-            "auth": "ca60984f-b1f0-4073-bd33-4c75168f749a",
-            "version": 2
-          },
-          "network": "hysteria",
-          "security": "tls",
-          "tlsSettings": {
-            "alpn": [
-              "h3"
-            ],
-            "serverName": "kz-kazilik-1.fantoff.online"
-          }
-        },
-        "tag": "proxy2",
-        "remarks": "🇪🇸 HYSTERIA-14 | 🎮 1"
-      },
-      {
-        "protocol": "hysteria",
-        "settings": {
           "address": "n9.neproxy.net",
           "port": 443,
           "version": 2
@@ -17361,8 +17182,8 @@
             "serverName": "n9.neproxy.net"
           }
         },
-        "tag": "proxy",
-        "remarks": "🇪🇸 HYSTERIA-14 | 🎮 1"
+        "tag": "proxy-1",
+        "remarks": "🇰🇿 HYSTERIA-14 | 🎮 1"
       },
       {
         "tag": "direct",
