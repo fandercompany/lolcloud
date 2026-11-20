@@ -1343,6 +1343,498 @@
     ],
     "outbounds": [
       {
+        "settings": {
+          "vnext": [
+            {
+              "address": "185.120.136.187",
+              "port": 8443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "bunny.net",
+            "publicKey": "92bt1gYq9EAz3SSOtKDrmqnbetNcaStEDicwrFg0_Rc"
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-1",
+        "remarks": "🇪🇺 Автовыбор 3 1"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "de1.dataroute.biz",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "de1.dataroute.biz",
+            "publicKey": "ukcoZQkMdk1Agfxe-a-SmgWIuxmUKxwcs4dLtNwk8QE"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-2",
+        "remarks": "🇪🇺 Автовыбор 3 2"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "nl4.dataroute.biz",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "nl4.dataroute.biz",
+            "publicKey": "DQ2XFGAzj1KywRuD7mGUFGzz0j-hD27JjtKcwDcIVTg"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-3",
+        "remarks": "🇪🇺 Автовыбор 3 3"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "ee.horizonless.pro",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "ee.horizonless.pro",
+            "publicKey": "gwf1Iku4TUicRXPLblL6m4OZs3L26G8xfNPd0KwzFHc"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-4",
+        "remarks": "🇪🇺 Автовыбор 3 4"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "usa.horizonless.pro",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "usa.horizonless.pro",
+            "publicKey": "8WI2Xga4eP5BTlRGT4quntWwNWC2pFy6WYS1aFwwc3w"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-5",
+        "remarks": "🇪🇺 Автовыбор 3 5"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "main.video-convert.pro",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "main.video-convert.pro",
+            "publicKey": "NSShk93XyRoltcvSM6AFbjbqSOebKDqGfB2QBCX_7F8"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-6",
+        "remarks": "🇪🇺 Автовыбор 3 6"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "fi4.dataroute.biz",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "fi4.dataroute.biz",
+            "publicKey": "dMTxDKG-2AERHjNbLh2Ky7vJHoLb0MjkDzOcS-fr4wY"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-7",
+        "remarks": "🇪🇺 Автовыбор 3 7"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "jp.dataroute.biz",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "jp.dataroute.biz",
+            "publicKey": "2AFigbtmwULhMenbTu24cFc3dvp-FBHGbvbi3OPjkn4"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-8",
+        "remarks": "🇪🇺 Автовыбор 3 8"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "api05.cloudspace.lol",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "api05.cloudspace.lol",
+            "publicKey": "nOkvud86_LbumaZIwDKw_EFt952CbqPnAq5KCzP6vW8"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-9",
+        "remarks": "🇪🇺 Автовыбор 3 9"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "lv.horizonless.pro",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "lv.horizonless.pro",
+            "publicKey": "2Lck1PQRnuKKYlPeYm9Rz5pG55R0YvJHOQMrWX4IRzg"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-10",
+        "remarks": "🇪🇺 Автовыбор 3 10"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "sw.dataroute.biz",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "sw.dataroute.biz",
+            "publicKey": "PdRdUhKR-af2BP2u5J5rLoyC2Uhe-pW4Vj33A9KeRlE"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-11",
+        "remarks": "🇪🇺 Автовыбор 3 11"
+      },
+      {
+        "settings": {
+          "vnext": [
+            {
+              "address": "ro.convert-cloud.guru",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "ro.convert-cloud.guru",
+            "publicKey": "HqbMV3H-SkTuh_q3j_NwrDCBcAPOt861a_OVU0MVgiI"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-12",
+        "remarks": "🇪🇺 Автовыбор 3 12"
+      },
+      {
         "tag": "direct",
         "protocol": "freedom"
       },
@@ -12972,6 +13464,48 @@
         "remarks": "🇩🇪 Германия 1"
       },
       {
+        "settings": {
+          "vnext": [
+            {
+              "address": "deaura.routeon.pro",
+              "port": 443,
+              "users": [
+                {
+                  "encryption": "none",
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "protocol": "vless",
+        "streamSettings": {
+          "tcpSettings": {},
+          "security": "reality",
+          "realitySettings": {
+            "fingerprint": "firefox",
+            "serverName": "deaura.routeon.pro",
+            "publicKey": "AuaxqRa1SHdNflIQdWOvsKwZbb-GudyLZJh6F3Fx6zk"
+          },
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
+        },
+        "tag": "proxy-2",
+        "remarks": "🇩🇪 Германия 2"
+      },
+      {
         "tag": "direct",
         "protocol": "freedom"
       },
@@ -13537,32 +14071,43 @@
     ],
     "outbounds": [
       {
-        "protocol": "vless",
         "settings": {
           "vnext": [
             {
-              "address": "eu90.cdn77.icu",
-              "port": 20040,
+              "address": "it.horizonless.pro",
+              "port": 443,
               "users": [
                 {
                   "encryption": "none",
-                  "flow": "",
-                  "id": "c1f4f185-5786-40c9-893f-2f100b7165f2"
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
                 }
               ]
             }
           ]
         },
+        "protocol": "vless",
         "streamSettings": {
-          "network": "tcp",
+          "tcpSettings": {},
+          "security": "reality",
           "realitySettings": {
             "fingerprint": "firefox",
-            "publicKey": "EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8",
-            "serverName": "127.0.0.1",
-            "shortId": "1ed136481e0ede74"
+            "serverName": "it.horizonless.pro",
+            "publicKey": "_j2WOC-2bKrT_NYoILpIHacMFb6rHjkC_fuqf5LCNFw"
           },
-          "security": "reality",
-          "tcpSettings": {}
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
         },
         "tag": "proxy-1",
         "remarks": "🇮🇹 Италия 1"
@@ -13806,69 +14351,16 @@
     ],
     "outbounds": [
       {
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "132.243.231.21",
-              "port": 443,
-              "users": [
-                {
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision",
-                  "id": "f602f1d4-4a6b-4077-ac2f-cc8e07749b11"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "finalmask": {
-            "quicParams": null,
-            "tcp": [
-              {
-                "settings": {
-                  "delay": "0",
-                  "delays": [
-                    "0"
-                  ],
-                  "length": "10-20",
-                  "lengths": [
-                    "10-20"
-                  ],
-                  "packets": "tlshello"
-                },
-                "type": "fragment"
-              }
-            ],
-            "udp": null
-          },
-          "network": "tcp",
-          "realitySettings": {
-            "fingerprint": "firefox",
-            "publicKey": "nF_kEdHan2dgl2tlQ_dtNaKZ4oORhuiFrXHbtEDcT2Q",
-            "serverName": "se.frgcdn.xyz",
-            "shortId": "2d6d073dc88f22a8",
-            "spiderX": "/"
-          },
-          "security": "reality",
-          "spx": "/",
-          "tcpSettings": {}
-        },
-        "tag": "proxy-1",
-        "remarks": "🇫🇮 Финляндия 1"
-      },
-      {
         "settings": {
           "vnext": [
             {
               "address": "fi.convert-cloud.guru",
-              "port": 443,
+              "port": 4243,
               "users": [
                 {
                   "encryption": "none",
                   "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
-                  "flow": "xtls-rprx-vision"
+                  "flow": ""
                 }
               ]
             }
@@ -13876,17 +14368,21 @@
         },
         "protocol": "vless",
         "streamSettings": {
-          "tcpSettings": {},
           "security": "reality",
           "realitySettings": {
             "fingerprint": "firefox",
             "serverName": "fi.convert-cloud.guru",
-            "publicKey": "9kQGK7IuVFWU9xCb4g9ygL1CEv87QmVZJzWLz74pTSc"
+            "publicKey": "vCHucdoD_m-TKVHS7si1akKgP6r4dvTLUX8y1TTZQG4"
           },
-          "network": "tcp"
+          "grpcSettings": {
+            "multiMode": false,
+            "authority": "fi.convert-cloud.guru",
+            "serviceName": "ns"
+          },
+          "network": "grpc"
         },
-        "tag": "proxy-2",
-        "remarks": "🇫🇮 Финляндия 2"
+        "tag": "proxy-1",
+        "remarks": "🇫🇮 Финляндия 1"
       },
       {
         "tag": "direct",
@@ -14148,7 +14644,7 @@
     ]
   },
   {
-    "remarks": "🇫🇷 Франция",
+    "remarks": "🇹🇭 Таиланд",
     "dns": {
       "servers": [
         "1.1.1.1",
@@ -14236,36 +14732,43 @@
     ],
     "outbounds": [
       {
-        "protocol": "vless",
         "settings": {
           "vnext": [
             {
-              "address": "178.214.116.7",
-              "port": 8443,
+              "address": "th.convert-cloud.guru",
+              "port": 443,
               "users": [
                 {
                   "encryption": "none",
-                  "flow": "",
-                  "id": "2cbba076-cadf-4f45-9335-ab1dc46c8d04"
+                  "id": "d4c4efe0-425b-4345-8043-3fa5187b8cc6",
+                  "flow": "xtls-rprx-vision"
                 }
               ]
             }
           ]
         },
+        "protocol": "vless",
         "streamSettings": {
-          "network": "xhttp",
+          "tcpSettings": {},
+          "security": "reality",
           "realitySettings": {
             "fingerprint": "firefox",
-            "publicKey": "kCIAVMSDZLNmTEtYWUI6xrNkbclgVwsAvqeHeJzCtnI",
-            "serverName": "static-fr.clipwave.cc",
-            "shortId": "459847f6e3772ce8"
+            "serverName": "th.convert-cloud.guru",
+            "publicKey": "L7eQV3YrlsGhfsfrfyAnK6_kVwLtfREY7svRgTHP000"
           },
-          "security": "reality",
-          "xhttpSettings": {
-            "host": "static-fr.clipwave.cc",
-            "mode": "packet-up",
-            "path": "/edge/250edddc409e/"
-          }
+          "finalmask": {
+            "tcp": [
+              {
+                "settings": {
+                  "delay": "0",
+                  "length": "10-20",
+                  "packets": "tlshello"
+                },
+                "type": "fragment"
+              }
+            ]
+          },
+          "network": "tcp"
         },
         "tag": "proxy-1",
         "remarks": "🇫🇷 Франция 1"
